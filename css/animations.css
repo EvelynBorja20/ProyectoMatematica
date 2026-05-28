@@ -1,0 +1,62 @@
+html{
+scroll-behavior:smooth;
+}
+
+.hero,
+.metric-card,
+.panel{
+opacity:0;
+transform:translateY(25px);
+animation:fadeUp .8s forwards;
+}
+
+.metric-card:nth-child(2){
+animation-delay:.1s;
+}
+
+.metric-card:nth-child(3){
+animation-delay:.2s;
+}
+
+.metric-card:nth-child(4){
+animation-delay:.3s;
+}
+
+@keyframes fadeUp{
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* HOVER */
+
+.metric-card,
+.panel,
+.hero{
+transition:.35s ease;
+}
+
+.metric-card:hover,
+.panel:hover{
+transform:translateY(-6px);
+box-shadow:
+0 12px 30px rgba(0,0,0,.25);
+border-color:#2A395B;
+}
+
+.hero button,
+.profile button,
+.menu-btn{
+transition:.3s;
+}
+
+.hero button:hover{
+transform:translateY(-2px);
+}
+
+.sidebar a{
+transition:.3s;
+}
