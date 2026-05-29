@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 
-    
-<!-- PERMITE USAR ICONOS-->
+    <!-- PERMITE USAR ICONOS-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -22,66 +21,55 @@
     <div class="dashboard">
       <!-- SIDEBAR -->
 
-      <aside class="sidebar">
-        <div class="logo">
+      <!-- NAVBAR SUPERIOR -->
+
+      <header class="navbar">
+        <div class="nav-logo">
           <i class="fa-solid fa-chart-line"></i>
           <span>FinanceLab</span>
         </div>
-
-        <nav>
+        <!-- BOTON HAMBURGUESA -->
+        <button class="menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="nav-menu">
           <a class="nav-link active" href="#hero">
             <i class="fa-solid fa-house"></i>
-            <span>Inicio</span>
+            Inicio
           </a>
 
           <a class="nav-link" href="#theory">
             <i class="fa-solid fa-book"></i>
-            <span>Teoría</span>
+            Teoría
           </a>
 
           <a class="nav-link" href="#dashboard">
             <i class="fa-solid fa-calculator"></i>
-            <span>Dashboard</span>
+            Dashboard
           </a>
 
           <a class="nav-link" href="#simulator">
             <i class="fa-solid fa-chart-pie"></i>
-            <span>Simulador</span>
+            Simulador
           </a>
 
           <a class="nav-link" href="#quiz">
             <i class="fa-solid fa-clipboard-question"></i>
-            <span>Quiz</span>
+            Quiz
           </a>
         </nav>
-      </aside>
 
+        <div class="nav-right">
+          <button id="theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="avatar">US</div>
+        </div>
+      </header>
       <!-- MAIN -->
 
       <main class="main">
-        <!-- TOPBAR -->
-
-        <header class="topbar">
-          <div class="topbar-left">
-            <button class="menu-btn">
-              <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <div>
-              <h1>FinanceLab Pro</h1>
-              <p>Matemática Financiera</p>
-            </div>
-          </div>
-
-          <div class="profile">
-            <button id="theme-toggle">
-              <i class="fa-solid fa-moon"></i>
-            </button>
-
-            <div class="avatar">US</div>
-          </div>
-        </header>
-
         <!-- HERO -->
 
         <section id="hero" class="hero">
@@ -98,15 +86,100 @@
         </section>
 
         <!-- THEORY -->
-
         <section id="theory" class="panel theory-panel">
-          <h3>Fundamentos Financieros</h3>
+          <div class="theory-header">
+            <h3>Fundamentos Financieros</h3>
 
-          <p>
-            Aquí estudiaremos interés simple, interés compuesto, valor presente
-            y valor futuro.
-          </p>
+            <p>
+              Aprende los conceptos esenciales de matemática financiera mediante
+              teoría clara y ejemplos prácticos.
+            </p>
+          </div>
+
+          <div class="theory-grid">
+            <!-- SIMPLE -->
+
+            <div class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-percent"></i>
+              </div>
+
+              <h4>Interés Simple</h4>
+
+              <p>Calcula intereses únicamente sobre el capital inicial.</p>
+
+              <div class="formula">I = C × r × t</div>
+
+              <button id="demo-simple" class="theory-btn">Ver ejemplo</button>
+
+              <div id="demo-simple-box" class="demo-box">
+                Capital $1000 al 10% durante 2 años.<br />
+                Interés = $200
+              </div>
+            </div>
+
+            <!-- COMPUESTO -->
+
+            <div class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+
+              <h4>Interés Compuesto</h4>
+
+              <p>Los intereses generan nuevos intereses a través del tiempo.</p>
+
+              <div class="formula">VF = C(1+r)^t</div>
+
+              <button id="demo-compound" class="theory-btn">Ver ejemplo</button>
+
+              <div id="demo-compound-box" class="demo-box">
+                $1000 al 10% por 2 años = $1210
+              </div>
+            </div>
+
+            <!-- VALOR FUTURO -->
+
+            <div class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-sack-dollar"></i>
+              </div>
+
+              <h4>Valor Futuro</h4>
+
+              <p>Proyección del dinero considerando crecimiento financiero.</p>
+
+              <div class="formula">VF = VP(1+r)^t</div>
+
+              <button id="demo-future" class="theory-btn">Ver ejemplo</button>
+
+              <div id="demo-future-box" class="demo-box">
+                $1000 al 10% = $1100 en un año
+              </div>
+            </div>
+
+            <!-- VALOR PRESENTE -->
+
+            <div class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-money-bill-wave"></i>
+              </div>
+
+              <h4>Valor Presente</h4>
+
+              <p>Determina cuánto vale hoy un dinero futuro.</p>
+
+              <div class="formula">VP = VF / (1+r)^t</div>
+
+              <button id="demo-present" class="theory-btn">Ver ejemplo</button>
+
+              <div id="demo-present-box" class="demo-box">
+                $1210 futuro al 10% = $1000 hoy
+              </div>
+            </div>
+          </div>
         </section>
+        <!-- THEORY -->
 
         <!-- DASHBOARD -->
 
@@ -354,7 +427,7 @@
           <div class="quiz-score-box">
             <h4>Score</h4>
             <p>
-              <span id="quiz-score">0</span>
+              <span id="quiz-puntaje">0</span>
               puntos
             </p>
           </div>
@@ -391,7 +464,7 @@
 
     <!-- SCRIPTS -->
 
-    <script src="js/navigation.js"></script>
+    <script src="js/navegacion.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/animations.js"></script>
 
@@ -402,7 +475,8 @@
     <script src="js/futuro-simulador.js"></script>
     <script src="js/tutor.js"></script>
 
-    <script src="js/quiz-data.js"></script>
-    <script src="js/quiz.js"></script>
+    <script src="js/pregunatasJuego.js"></script>
+    <script src="js/teoria.js"></script>
+    <script src="js/juego.js"></script>
   </body>
 </html>
