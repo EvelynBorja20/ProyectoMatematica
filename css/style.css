@@ -529,7 +529,6 @@ CHARTS
   max-width: 520px;
 }
 
-
 /* =========================
 FUTURE SIMULATOR
 ========================= */
@@ -771,4 +770,187 @@ QUIZ
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+}
+
+.theory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.theory-card {
+  background: #121b2e;
+  border: 1px solid #1f2a44;
+  border-radius: 20px;
+  padding: 22px;
+  transition: 0.3s;
+}
+
+.theory-card:hover {
+  transform: translateY(-4px);
+}
+
+.theory-card h4 {
+  margin-bottom: 10px;
+}
+
+.theory-card p {
+  color: #9aa7bd;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.theory-card small {
+  color: #7ed957;
+  font-weight: 600;
+}
+.theory-header {
+  margin-bottom: 30px;
+}
+
+.theory-header h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.theory-header p {
+  color: #9aa7bd;
+  max-width: 700px;
+  line-height: 1.7;
+}
+
+.theory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.theory-card {
+  background: #121b2e;
+  border: 1px solid #1f2a44;
+  border-radius: 24px;
+  padding: 26px;
+  transition: 0.35s;
+}
+
+.theory-card:hover {
+  transform: translateY(-6px);
+  border-color: #7ed957;
+  box-shadow: 0 10px 30px rgba(126, 217, 87, 0.12);
+}
+
+.theory-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: #182235;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  font-size: 22px;
+  color: #7ed957;
+}
+
+.theory-card h4 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.theory-card p {
+  color: #9aa7bd;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.formula {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #0f172a;
+  border: 1px solid #1f2a44;
+  color: #7ed957;
+  font-weight: 600;
+}
+
+/* THEORY */
+
+.theory-header{
+margin-bottom:25px;
+}
+
+.theory-header p{
+color:#9AA7BD;
+line-height:1.7;
+}
+
+.theory-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:24px;
+margin-top:25px;
+}
+
+.theory-card{
+background:#121B2E;
+border:1px solid #1F2A44;
+border-radius:24px;
+padding:24px;
+transition:.35s;
+}
+
+.theory-card:hover{
+transform:translateY(-5px);
+border-color:#7ED957;
+}
+
+.theory-icon{
+width:56px;
+height:56px;
+background:#182235;
+border-radius:14px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:22px;
+color:#7ED957;
+margin-bottom:16px;
+}
+
+.theory-card p{
+color:#9AA7BD;
+line-height:1.6;
+margin:12px 0;
+}
+
+.formula{
+display:inline-block;
+padding:10px 14px;
+border-radius:12px;
+background:#0F172A;
+border:1px solid #1F2A44;
+color:#7ED957;
+font-weight:600;
+}
+
+.theory-btn{
+margin-top:18px;
+padding:10px 18px;
+border:none;
+border-radius:12px;
+background:#7ED957;
+cursor:pointer;
+font-weight:600;
+}
+
+.demo-box{
+display:none;
+margin-top:15px;
+padding:15px;
+border-radius:14px;
+background:#0F172A;
+border:1px solid #1F2A44;
+line-height:1.7;
+color:#9AA7BD;
 }

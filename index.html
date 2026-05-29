@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 
-    
-<!-- PERMITE USAR ICONOS-->
+    <!-- PERMITE USAR ICONOS-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -99,13 +98,120 @@
 
         <!-- THEORY -->
 
-        <section id="theory" class="panel theory-panel">
-          <h3>Fundamentos Financieros</h3>
+        <!-- THEORY -->
 
-          <p>
-            Aquí estudiaremos interés simple, interés compuesto, valor presente
-            y valor futuro.
-          </p>
+        <section id="theory" class="panel theory-panel">
+          <div class="theory-header">
+            <h3>Fundamentos Financieros</h3>
+
+            <p>
+              Aprende conceptos financieros mediante teoría y práctica rápida.
+            </p>
+          </div>
+
+          <div class="theory-grid">
+            <!-- INTERÉS SIMPLE -->
+
+            <article class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-percent"></i>
+              </div>
+
+              <h4>Interés Simple</h4>
+
+              <p>El interés se calcula únicamente sobre el capital inicial.</p>
+
+              <div class="formula">I = C × i × t</div>
+
+              <button class="theory-btn" id="demo-simple">
+                Probar ejemplo
+              </button>
+
+              <div class="demo-box" id="demo-simple-box">
+                Capital: $1000<br />
+                Tasa: 10%<br />
+                Tiempo: 2 años<br /><br />
+                Interés generado:
+                <strong>$200</strong>
+              </div>
+            </article>
+
+            <!-- INTERÉS COMPUESTO -->
+
+            <!-- INTERÉS COMPUESTO -->
+
+            <article class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+
+              <h4>Interés Compuesto</h4>
+
+              <p>Los intereses se acumulan y generan nuevas ganancias.</p>
+
+              <div class="formula">M = C(1+i)^t</div>
+
+              <button class="theory-btn" id="demo-compound">
+                Ver crecimiento
+              </button>
+
+              <div class="demo-box" id="demo-compound-box">
+                Capital: $1000<br />
+                Tasa: 10%<br />
+                Tiempo: 2 años<br /><br />
+                Monto Final:
+                <strong>$1210</strong>
+              </div>
+            </article>
+
+            <!-- VALOR FUTURO -->
+
+            <article class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-coins"></i>
+              </div>
+
+              <h4>Valor Futuro</h4>
+
+              <p>Representa cuánto valdrá tu dinero después de invertirlo.</p>
+
+              <div class="formula">VF = VP(1+i)^n</div>
+
+              <button class="theory-btn" id="demo-future">Ver ejemplo</button>
+
+              <div class="demo-box" id="demo-future-box">
+                Inversión: $2000<br />
+                Tasa: 8%<br />
+                Tiempo: 5 años<br /><br />
+                Valor Futuro:
+                <strong>$2938</strong>
+              </div>
+            </article>
+
+            <!-- VALOR PRESENTE -->
+
+            <article class="theory-card">
+              <div class="theory-icon">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+
+              <h4>Valor Presente</h4>
+
+              <p>Permite conocer cuánto vale hoy un dinero futuro.</p>
+
+              <div class="formula">VP = VF / (1+i)^n</div>
+
+              <button class="theory-btn" id="demo-present">Ver cálculo</button>
+
+              <div class="demo-box" id="demo-present-box">
+                Futuro: $5000<br />
+                Tasa: 10%<br />
+                Tiempo: 3 años<br /><br />
+                Valor Presente:
+                <strong>$3756</strong>
+              </div>
+            </article>
+          </div>
         </section>
 
         <!-- DASHBOARD -->
@@ -403,6 +509,7 @@
     <script src="js/tutor.js"></script>
 
     <script src="js/pregunatasJuego.js"></script>
+    <script src="js/teoria.js"></script>
     <script src="js/juego.js"></script>
   </body>
 </html>
