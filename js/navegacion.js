@@ -2,21 +2,36 @@
 // NAVEGACION MENU
 // =========================
 
-// Buscar todos los botones del menú lateral
+// Buscar links del menú
 const links = document.querySelectorAll(".nav-link");
 
-// Recorrer cada botón del menú
+// Active del menú
 links.forEach((link) => {
 
-  // Cuando el usuario haga clic
   link.addEventListener("click", () => {
 
-    // Quitar clase active de todos
     links.forEach((l) => {
       l.classList.remove("active");
     });
 
-    // Poner active solo al botón seleccionado
     link.classList.add("active");
   });
+
 });
+
+// =========================
+// MENU HAMBURGUESA MOBILE
+// =========================
+
+const menuBtn = document.querySelector(".menu-btn");
+const navMenu = document.querySelector(".nav-menu");
+
+if (menuBtn && navMenu) {
+
+  menuBtn.addEventListener("click", () => {
+
+    navMenu.classList.toggle("active");
+
+  });
+
+}

@@ -21,66 +21,55 @@
     <div class="dashboard">
       <!-- SIDEBAR -->
 
-      <aside class="sidebar">
-        <div class="logo">
+      <!-- NAVBAR SUPERIOR -->
+
+      <header class="navbar">
+        <div class="nav-logo">
           <i class="fa-solid fa-chart-line"></i>
           <span>FinanceLab</span>
         </div>
-
-        <nav>
+        <!-- BOTON HAMBURGUESA -->
+        <button class="menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav class="nav-menu">
           <a class="nav-link active" href="#hero">
             <i class="fa-solid fa-house"></i>
-            <span>Inicio</span>
+            Inicio
           </a>
 
           <a class="nav-link" href="#theory">
             <i class="fa-solid fa-book"></i>
-            <span>Teoría</span>
+            Teoría
           </a>
 
           <a class="nav-link" href="#dashboard">
             <i class="fa-solid fa-calculator"></i>
-            <span>Dashboard</span>
+            Dashboard
           </a>
 
           <a class="nav-link" href="#simulator">
             <i class="fa-solid fa-chart-pie"></i>
-            <span>Simulador</span>
+            Simulador
           </a>
 
           <a class="nav-link" href="#quiz">
             <i class="fa-solid fa-clipboard-question"></i>
-            <span>Quiz</span>
+            Quiz
           </a>
         </nav>
-      </aside>
 
+        <div class="nav-right">
+          <button id="theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="avatar">US</div>
+        </div>
+      </header>
       <!-- MAIN -->
 
       <main class="main">
-        <!-- TOPBAR -->
-
-        <header class="topbar">
-          <div class="topbar-left">
-            <button class="menu-btn">
-              <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <div>
-              <h1>FinanceLab Pro</h1>
-              <p>Matemática Financiera</p>
-            </div>
-          </div>
-
-          <div class="profile">
-            <button id="theme-toggle">
-              <i class="fa-solid fa-moon"></i>
-            </button>
-
-            <div class="avatar">US</div>
-          </div>
-        </header>
-
         <!-- HERO -->
 
         <section id="hero" class="hero">
@@ -97,122 +86,100 @@
         </section>
 
         <!-- THEORY -->
-
-        <!-- THEORY -->
-
         <section id="theory" class="panel theory-panel">
           <div class="theory-header">
             <h3>Fundamentos Financieros</h3>
 
             <p>
-              Aprende conceptos financieros mediante teoría y práctica rápida.
+              Aprende los conceptos esenciales de matemática financiera mediante
+              teoría clara y ejemplos prácticos.
             </p>
           </div>
 
           <div class="theory-grid">
-            <!-- INTERÉS SIMPLE -->
+            <!-- SIMPLE -->
 
-            <article class="theory-card">
+            <div class="theory-card">
               <div class="theory-icon">
                 <i class="fa-solid fa-percent"></i>
               </div>
 
               <h4>Interés Simple</h4>
 
-              <p>El interés se calcula únicamente sobre el capital inicial.</p>
+              <p>Calcula intereses únicamente sobre el capital inicial.</p>
 
-              <div class="formula">I = C × i × t</div>
+              <div class="formula">I = C × r × t</div>
 
-              <button class="theory-btn" id="demo-simple">
-                Probar ejemplo
-              </button>
+              <button id="demo-simple" class="theory-btn">Ver ejemplo</button>
 
-              <div class="demo-box" id="demo-simple-box">
-                Capital: $1000<br />
-                Tasa: 10%<br />
-                Tiempo: 2 años<br /><br />
-                Interés generado:
-                <strong>$200</strong>
+              <div id="demo-simple-box" class="demo-box">
+                Capital $1000 al 10% durante 2 años.<br />
+                Interés = $200
               </div>
-            </article>
+            </div>
 
-            <!-- INTERÉS COMPUESTO -->
+            <!-- COMPUESTO -->
 
-            <!-- INTERÉS COMPUESTO -->
-
-            <article class="theory-card">
+            <div class="theory-card">
               <div class="theory-icon">
                 <i class="fa-solid fa-chart-line"></i>
               </div>
 
               <h4>Interés Compuesto</h4>
 
-              <p>Los intereses se acumulan y generan nuevas ganancias.</p>
+              <p>Los intereses generan nuevos intereses a través del tiempo.</p>
 
-              <div class="formula">M = C(1+i)^t</div>
+              <div class="formula">VF = C(1+r)^t</div>
 
-              <button class="theory-btn" id="demo-compound">
-                Ver crecimiento
-              </button>
+              <button id="demo-compound" class="theory-btn">Ver ejemplo</button>
 
-              <div class="demo-box" id="demo-compound-box">
-                Capital: $1000<br />
-                Tasa: 10%<br />
-                Tiempo: 2 años<br /><br />
-                Monto Final:
-                <strong>$1210</strong>
+              <div id="demo-compound-box" class="demo-box">
+                $1000 al 10% por 2 años = $1210
               </div>
-            </article>
+            </div>
 
             <!-- VALOR FUTURO -->
 
-            <article class="theory-card">
+            <div class="theory-card">
               <div class="theory-icon">
-                <i class="fa-solid fa-coins"></i>
+                <i class="fa-solid fa-sack-dollar"></i>
               </div>
 
               <h4>Valor Futuro</h4>
 
-              <p>Representa cuánto valdrá tu dinero después de invertirlo.</p>
+              <p>Proyección del dinero considerando crecimiento financiero.</p>
 
-              <div class="formula">VF = VP(1+i)^n</div>
+              <div class="formula">VF = VP(1+r)^t</div>
 
-              <button class="theory-btn" id="demo-future">Ver ejemplo</button>
+              <button id="demo-future" class="theory-btn">Ver ejemplo</button>
 
-              <div class="demo-box" id="demo-future-box">
-                Inversión: $2000<br />
-                Tasa: 8%<br />
-                Tiempo: 5 años<br /><br />
-                Valor Futuro:
-                <strong>$2938</strong>
+              <div id="demo-future-box" class="demo-box">
+                $1000 al 10% = $1100 en un año
               </div>
-            </article>
+            </div>
 
             <!-- VALOR PRESENTE -->
 
-            <article class="theory-card">
+            <div class="theory-card">
               <div class="theory-icon">
-                <i class="fa-solid fa-wallet"></i>
+                <i class="fa-solid fa-money-bill-wave"></i>
               </div>
 
               <h4>Valor Presente</h4>
 
-              <p>Permite conocer cuánto vale hoy un dinero futuro.</p>
+              <p>Determina cuánto vale hoy un dinero futuro.</p>
 
-              <div class="formula">VP = VF / (1+i)^n</div>
+              <div class="formula">VP = VF / (1+r)^t</div>
 
-              <button class="theory-btn" id="demo-present">Ver cálculo</button>
+              <button id="demo-present" class="theory-btn">Ver ejemplo</button>
 
-              <div class="demo-box" id="demo-present-box">
-                Futuro: $5000<br />
-                Tasa: 10%<br />
-                Tiempo: 3 años<br /><br />
-                Valor Presente:
-                <strong>$3756</strong>
+              <div id="demo-present-box" class="demo-box">
+                $1210 futuro al 10% = $1000 hoy
               </div>
-            </article>
+            </div>
           </div>
         </section>
+        <!-- THEORY -->
 
         <!-- DASHBOARD -->
 
