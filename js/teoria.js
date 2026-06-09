@@ -1,5 +1,4 @@
 // =========================
-// THEORY.JS
 // Fundamentos Interactivos
 // FinanceLab Pro
 // =========================
