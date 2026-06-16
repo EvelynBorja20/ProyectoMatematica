@@ -1,604 +1,151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinanceLab Pro</title>
 
-    <link rel="stylesheet" href="css/animations.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- PERMITE USAR ICONOS-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-  </head>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
 
-  <body>
-    <div class="dashboard">
-      <!-- SIDEBAR -->
+<body>
 
-      <!-- NAVBAR SUPERIOR -->
+<div class="dashboard">
 
-      <header class="navbar">
+    <!-- NAVBAR -->
+    <header class="navbar">
+
         <div class="nav-logo">
-          <i class="fa-solid fa-chart-line"></i>
-          <span>FinanceLab-Matematica 1</span>
+            <i class="fa-solid fa-chart-line"></i>
+            <span>FinanceLab-Matemática 1</span>
         </div>
-         <!-- BOTON HAMBURGUESA -->
+
         <button class="menu-btn">
-          <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars"></i>
         </button>
+
         <nav class="nav-menu">
-          <a class="nav-link active" href="#hero">
-            <i class="fa-solid fa-house"></i>
-            Inicio
-          </a>
 
-          <a class="nav-link" href="#theory">
-            <i class="fa-solid fa-book"></i>
-            Teoría
-          </a>
+            <a class="nav-link active" href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
 
-          <a class="nav-link" href="#dashboard">
-            <i class="fa-solid fa-calculator"></i>
-            Dashboard
-          </a>
+            <a class="nav-link" href="Paginas/teoria.html">
+                <i class="fa-solid fa-book"></i>
+                Teoría
+            </a>
 
-          <a class="nav-link" href="#customer-register">
-            <i class="fa-solid fa-user-plus"></i>
-            Registro Clientes
-          </a>
+            <a class="nav-link" href="Paginas/calculadoras.html">
+                <i class="fa-solid fa-calculator"></i>
+                Calculadoras
+            </a>
 
-          <a class="nav-link" href="#simulator">
-            <i class="fa-solid fa-chart-pie"></i>
-            Simulador Crédito
-          </a>
+            <a class="nav-link" href="Paginas/simulador.html">
+                <i class="fa-solid fa-chart-pie"></i>
+                Simulador
+            </a>
 
-          <a class="nav-link" href="#payment-register">
-            <i class="fa-solid fa-cash-register"></i>
-            Registro Pagos
-          </a>
+            <a class="nav-link" href="Paginas/quiz.html">
+                <i class="fa-solid fa-clipboard-question"></i>
+                Quiz
+            </a>
 
-          <a class="nav-link" href="#quiz">
-            <i class="fa-solid fa-clipboard-question"></i>
-            Quiz
-          </a>
-               <a class="nav-link" href="#quiz">
-            <i class="fa-solid fa-clipboard-question"></i>
-            Fecha Proceso Valida el proceso muesta una fecha
-          </a>
         </nav>
 
         <div class="nav-right">
-          <button id="theme-toggle">
-            <i class="fa-solid fa-moon"></i>
-          </button>
-
-          <div class="avatar">US</div>
+            <div class="avatar">US</div>
         </div>
-      </header>
-       <!-- MAIN -->
 
-      <main class="main">
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+
         <!-- HERO -->
-        <section id="hero" class="hero">
-          <div>
-            <h2>Aprende Matemática Financiera con herramientas interactivas</h2>
+        <section class="hero">
 
-            <p>
-              Plataforma educativa para comprender cálculos financieros,
-              simulaciones y decisiones económicas.
-            </p>
+            <div>
 
-            <a href="#dashboard" class="hero-btn"> Explorar Dashboard </a>
-          </div>
+                <h2>
+                    Aprende Matemática Financiera
+                    con herramientas interactivas
+                </h2>
+
+                <p>
+                    Plataforma educativa para comprender
+                    cálculos financieros, simulaciones y
+                    decisiones económicas.
+                </p>
+
+                <a href="Paginas/calculadoras.html"
+                   class="hero-btn">
+                    Explorar Plataforma
+                </a>
+
+            </div>
+
         </section>
 
-        <!-- THEORY -->
-        <section id="theory" class="panel theory-panel">
-          <div class="theory-header">
-            <h3>Fundamentos Financieros</h3>
+        <!-- MÉTRICAS -->
 
-            <p>
-              Aprende los conceptos esenciales de matemática financiera mediante
-              teoría clara y ejemplos prácticos.
-            </p>
-          </div>
+        <section class="metrics">
 
-          <div class="theory-grid">
-            <!-- SIMPLE -->
-
-            <div class="theory-card">
-              <div class="theory-icon">
-                <i class="fa-solid fa-percent"></i>
-              </div>
-
-              <h4>Interés Simple</h4>
-
-              <p>Calcula intereses únicamente sobre el capital inicial.</p>
-
-              <div class="formula">I = C × r × t</div>
-
-              <button id="demo-simple" class="theory-btn">Ver ejemplo</button>
-
-              <div id="demo-simple-box" class="demo-box">
-                Capital $1000 al 10% durante 2 años.<br />
-                Interés = $200
-              </div>
+            <div class="metric-card">
+                <h4>Interés</h4>
+                <p>Simple</p>
             </div>
 
-            <!-- COMPUESTO -->
-
-            <div class="theory-card">
-              <div class="theory-icon">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-
-              <h4>Interés Compuesto</h4>
-
-              <p>Los intereses generan nuevos intereses a través del tiempo.</p>
-
-              <div class="formula">VF = C(1+r)^t</div>
-
-              <button id="demo-compound" class="theory-btn">Ver ejemplo</button>
-
-              <div id="demo-compound-box" class="demo-box">
-                $1000 al 10% por 2 años = $1210
-              </div>
+            <div class="metric-card">
+                <h4>Créditos</h4>
+                <p>Banco</p>
             </div>
 
-            <!-- VALOR FUTURO -->
-
-            <div class="theory-card">
-              <div class="theory-icon">
-                <i class="fa-solid fa-sack-dollar"></i>
-              </div>
-
-              <h4>Valor Futuro</h4>
-
-              <p>Proyección del dinero considerando crecimiento financiero.</p>
-
-              <div class="formula">VF = VP(1+r)^t</div>
-
-              <button id="demo-future" class="theory-btn">Ver ejemplo</button>
-
-              <div id="demo-future-box" class="demo-box">
-                $1000 al 10% = $1100 en un año
-              </div>
+            <div class="metric-card">
+                <h4>Quiz</h4>
+                <p>Aprende</p>
             </div>
 
-            <!-- VALOR PRESENTE -->
-
-            <div class="theory-card">
-              <div class="theory-icon">
-                <i class="fa-solid fa-money-bill-wave"></i>
-              </div>
-
-              <h4>Valor Presente</h4>
-
-              <p>Determina cuánto vale hoy un dinero futuro.</p>
-
-              <div class="formula">VP = VF / (1+r)^t</div>
-
-              <button id="demo-present" class="theory-btn">Ver ejemplo</button>
-
-              <div id="demo-present-box" class="demo-box">
-                $1210 futuro al 10% = $1000 hoy
-              </div>
+            <div class="metric-card">
+                <h4>Simulación</h4>
+                <p>Finanzas</p>
             </div>
-          </div>
-        </section>
-        <!-- THEORY -->
 
-        <!-- DASHBOARD -->
-
-        <section id="dashboard" class="metrics">
-          <div class="metric-card">
-            <h4>Interés</h4>
-            <p>--</p>
-          </div>
-
-          <div class="metric-card">
-            <h4>Valor Futuro</h4>
-            <p>--</p>
-          </div>
-
-          <div class="metric-card">
-            <h4>Préstamos</h4>
-            <p>--</p>
-          </div>
-
-          <div class="metric-card">
-            <h4>Simulación</h4>
-            <p>--</p>
-          </div>
         </section>
 
-        <!-- SIMULATOR -->
+        <!-- BIENVENIDA -->
 
-        <section id="simulator-base" class="panels">
-          <!-- INTERÉS SIMPLE -->
+        <section class="panel">
 
-          <div class="panel calculator-panel">
-            <h3>Calculadora Financiera</h3>
+            <h3>Bienvenido a FinanceLab Pro</h3>
 
             <p class="panel-description">
-              Calcula el interés simple generado sobre un capital inicial
-              considerando tasa y tiempo.
+                Explora conceptos de matemática financiera,
+                realiza simulaciones, administra créditos
+                y evalúa tus conocimientos mediante
+                herramientas interactivas.
             </p>
 
-            <div class="calc-form">
-              <div class="input-group">
-                <label>Capital ($)</label>
-                <input type="number" id="capital" placeholder="Ej: 1000" />
-              </div>
-
-              <div class="input-group">
-                <label>Tasa (%)</label>
-                <input type="number" id="rate" placeholder="Ej: 10" />
-              </div>
-
-              <div class="input-group">
-                <label>Tiempo (años)</label>
-                <input type="number" id="time" placeholder="Ej: 2" />
-              </div>
-
-              <button id="calc-simple">Calcular</button>
-            </div>
-
-            <div class="result-box">
-              <h4>Resultado</h4>
-
-              <p>
-                Interés:
-                <span id="interest-result">--</span>
-              </p>
-
-              <p>
-                Monto Total:
-                <span id="total-result">--</span>
-              </p>
-            </div>
-          </div>
-         
-          <!-- INTERÉS COMPUESTO -->
-          <div class="panel compound-panel">
-            <h3>Interés Compuesto</h3>
-
-            <p class="panel-description">
-              Calcula el crecimiento del dinero cuando los intereses se
-              reinvierten y generan nuevos intereses.
-            </p>
-
-            <div class="calc-form">
-              <div class="input-group">
-                <label>Capital ($)</label>
-                <input type="number" id="compound-capital" placeholder="Ej: 1000" />
-              </div>
-
-              <div class="input-group">
-                <label>Tasa (%)</label>
-                <input type="number" id="compound-rate" placeholder="Ej: 10" />
-              </div>
-
-              <div class="input-group">
-                <label>Tiempo (años)</label>
-                <input type="number" id="compound-time" placeholder="Ej: 2" />
-              </div>
-
-              <button id="calc-compound" >Calcular</button>
-            </div>
-
-            <div class="result-box">
-              <h4>Resultado</h4>
-
-              <p>
-                Ganancia:
-                <span id="compound-interest-result">--</span>
-              </p>
-
-              <p>
-                Monto Final:
-                <span id="compound-total-result">--</span>
-              </p>
-            </div>
-          </div>
-          <!-- FUTURE SIMULATOR -->
-
-          <div class="panel future-panel">
-            <h3>Tu Futuro Financiero</h3>
-
-            <p class="panel-description">
-              Proyecta el crecimiento de tu dinero considerando inversión
-              inicial, aportes mensuales, tasa anual y tiempo.
-            </p>
-
-            <div class="calc-form">
-              <div class="input-group">
-                <label>Capital Inicial ($)</label>
-                <input
-                  type="number"
-                  id="future-capital"
-                  placeholder="Ej: 1000"
-                />
-              </div>
-
-              <div class="input-group">
-                <label>Aporte Mensual ($)</label>
-                <input
-                  type="number"
-                  id="future-monthly"
-                  placeholder="Ej: 100"
-                />
-              </div>
-
-              <div class="input-group">
-                <label>Tasa Anual (%)</label>
-                <input type="number" id="future-rate" placeholder="Ej: 10" />
-              </div>
-
-              <div class="input-group">
-                <label>Tiempo (años)</label>
-                <input type="number" id="future-years" placeholder="Ej: 10" />
-              </div>
-
-              <button id="calc-future">Simular Futuro</button>
-            </div>
-
-            <div class="result-box">
-              <h4>Resultado</h4>
-
-              <p>
-                Capital Aportado:
-                <span id="future-invested">--</span>
-              </p>
-
-              <p>
-                Intereses Ganados:
-                <span id="future-profit">--</span>
-              </p>
-
-              <p>
-                <span id="future-title"> Patrimonio Futuro: </span>
-
-                <span id="future-total">--</span>
-              </p>
-            </div>
-          </div>
-          <!-- TUTOR PREGUNTAS -->
-
-          <!-- TUTOR PREGUNTAS -->
-
-          <div class="panel tutor-panel">
-            <h3>Tutor IA</h3>
-
-            <p class="panel-description">
-              Haz preguntas sobre matemática financiera y recibe explicaciones
-              rápidas para aprender mientras practicas.
-            </p>
-
-            <div class="tutor-form">
-              <div class="input-group">
-                <label>Tu pregunta</label>
-
-                <input
-                  type="text"
-                  id="tutor-question"
-                  placeholder="Ej: ¿Qué es interés compuesto?"
-                />
-              </div>
-
-              <button id="ask-tutor">Preguntar</button>
-            </div>
-
-            <div class="result-box tutor-response">
-              <h4>Respuesta</h4>
-
-              <p id="tutor-answer">Escribe una pregunta para comenzar.</p>
-            </div>
-          </div>
-
-          <!-- GRÁFICO GLOBAL -->
-
-          <div class="panel global-chart-panel">
-            <h3>Centro Analítico</h3>
-
-            <p class="panel-description">
-              Visualiza gráficamente los resultados financieros obtenidos en las
-              calculadoras.
-            </p>
-
-            <div class="chart-box">
-              <canvas id="financeChart"></canvas>
-            </div>
-          </div>
-        </section>
-
-        <section id="customer-register" class="panel customer-panel" style="margin-top: 30px;">
-          <h3><i class="fa-solid fa-user-gear"></i> Registro de Clientes</h3>
-          <p class="panel-description">Ingresa los datos personales del solicitante para habilitar la simulación del crédito.</p>
-          
-          <div class="calc-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <div class="input-group">
-              <label>Cédula / Identificación</label>
-              <input type="text" id="client-id" placeholder="Ej: 1726354890" />
-            </div>
-            <div class="input-group">
-              <label>Nombres y Apellidos completos</label>
-              <input type="text" id="client-name" placeholder="Ej: Juan Pérez" />
-            </div>
-            <div class="input-group">
-              <label>Correo Electrónico</label>
-              <input type="email" id="client-email" placeholder="Ej: juan@mail.com" />
-            </div>
-            <div class="input-group">
-              <label>Ingresos Mensuales ($)</label>
-              <input type="number" id="client-income" placeholder="Ej: 850" />
-            </div>
-            <button id="save-client" style="grid-column: span 2; padding: 12px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
-              Registrar Cliente
-            </button>
-          </div>
-
-          <div class="result-box" id="client-status-box" style="display: none; margin-top: 15px;">
-            <p style="color: #28a745; font-weight: bold;"><i class="fa-solid fa-circle-check"></i> Cliente activo en el sistema:</p>
-            <span id="active-client-text">--</span>
-          </div>
-        </section>
-
-        <section id="simulator" class="panel simulator-panel" style="margin-top: 30px;">
-          <h3><i class="fa-solid fa-calculator"></i> Simulación y Administración de Créditos</h3>
-          <p class="panel-description">Calcula de manera automatizada las cuotas basándote en los esquemas de matemática financiera.</p>
-
-          <div class="calc-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <div class="input-group">
-              <label>Monto Solicitado ($)</label>
-              <input type="number" id="loan-amount" placeholder="Ej: 5000" min="1" />
-            </div>
-            <div class="input-group">
-              <label>Plazo del Crédito (Meses)</label>
-              <input type="number" id="loan-months" placeholder="Ej: 12" min="1" />
-            </div>
-            <div class="input-group">
-              <label>Tasa de Interés Anual (%)</label>
-              <input type="number" id="loan-rate" placeholder="Ej: 15.5" step="0.1" />
-            </div>
-            <div class="input-group">
-              <label>Tipo de Amortización</label>
-              <select id="loan-type" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; height: 42px;">
-                <option value="francesa">Sistema Francés (Cuota Fija)</option>
-                <option value="alemana">Sistema Alemán (Amortización Fija)</option>
-              </select>
-            </div>
-            <button id="calc-loan" style="grid-column: span 2; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
-              Generar Tabla de Amortización
-            </button>
-          </div>
-
-          <div class="result-box" id="quick-results" style="display: none; margin-top: 20px;">
-            <h4>Valores Calculados Automáticamente</h4>
-            <p>Cuota Mensual (Inicial): <span id="res-cuota" style="font-weight: bold; color: #28a745;">--</span></p>
-            <p>Total Interés del Crédito: <span id="res-interes">--</span></p>
-            <p>Monto Abonado Neto a Capital: <span id="res-capital-total">--</span></p>
-            <p>Costo Total del Crédito: <span id="res-total">--</span></p>
-          </div>
-
-          <div id="table-container" style="display: none; margin-top: 25px; overflow-x: auto;">
-            <h4>Tabla de Amortización Detallada</h4>
-            <table id="amortization-table" style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; min-width: 600px;">
-              <thead>
-                <tr style="background-color: #007BFF; color: white; text-align: left;">
-                  <th style="padding: 10px; border: 1px solid #ddd;">N° Cuota</th>
-                  <th style="padding: 10px; border: 1px solid #ddd;">Fecha de Pago</th>
-                  <th style="padding: 10px; border: 1px solid #ddd;">Valor de Capital</th>
-                  <th style="padding: 10px; border: 1px solid #ddd;">Valor de Interés</th>
-                  <th style="padding: 10px; border: 1px solid #ddd;">Total de la Cuota</th>
-                  <th style="padding: 10px; border: 1px solid #ddd;">Saldo Restante</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section id="payment-register" class="panel payment-panel" style="margin-top: 30px;">
-          <h3><i class="fa-solid fa-money-bill-transfer"></i> Registro de Pagos y Validación</h3>
-          <p class="panel-description">Controla el estado del crédito de tus clientes ingresando el pago de las cuotas ejecutadas.</p>
-
-          <div class="calc-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <div class="input-group">
-              <label>Número de Cuota a Pagar</label>
-              <input type="number" id="pay-cuota-num" placeholder="Ej: 1" min="1" />
-            </div>
-            <div class="input-group">
-              <label>Valor a Depositar ($)</label>
-              <input type="number" id="pay-amount" placeholder="Monto exacto de la cuota" />
-            </div>
-            <button id="execute-payment" style="grid-column: span 2; padding: 12px; background-color: #ffc107; color: #333; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
-              Procesar Pago
-            </button>
-          </div>
-
-          <div class="result-box" id="payment-log-box" style="display: none; margin-top: 15px;">
-            <h4>Validaciones de Estado de Crédito</h4>
-            <p>Estado General: <span id="credit-status" style="font-weight: bold; color: #007BFF;">Al día</span></p>
-            <p>Cuotas Pendientes: <span id="pending-cuotas-count">--</span></p>
-            <p>Historial de Operación: <span id="payment-history-text" style="font-style: italic; color: #555;">Ningún pago registrado.</span></p>
-          </div>
-        </section>
-
-         <!-- QUIZ -->
-
-        <!-- QUIZ -->
-
-        <section id="quiz" class="panel quiz-panel" style="margin-top: 30px;">
-          <h3>Quiz Financiero</h3>
-
-          <p class="panel-description">
-            Pon a prueba tus conocimientos de matemática financiera y mejora tu
-            score.
-          </p>
-
-          <!-- SCORE -->
-
-          <div class="quiz-score-box">
-            <h4>Score</h4>
-            <p>
-              <span id="quiz-puntaje">0</span>
-              puntos
-            </p>
-          </div>
-
-          <!-- PREGUNTA -->
-
-          <div class="quiz-container">
-            <h4 id="quiz-question">Cargando pregunta...</h4>
-
-            <div class="quiz-options">
-              <button class="quiz-option"></button>
-              <button class="quiz-option"></button>
-              <button class="quiz-option"></button>
-              <button class="quiz-option"></button>
-            </div>
-
-            <div class="result-box quiz-feedback">
-              <h4>Feedback</h4>
-
-              <p id="quiz-feedback">Selecciona una respuesta.</p>
-            </div>
-
-            <button id="next-question">Siguiente Pregunta</button>
-          </div>
         </section>
 
         <!-- FOOTER -->
 
         <footer class="footer">
-          <p>FinanceLab Pro © 2026</p>
+            <p>FinanceLab Pro © 2026</p>
         </footer>
-      </main>
-    </div>
 
-    <!-- SCRIPTS -->
+    </main>
 
-    <script src="js/navegacion.js"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/animations.js"></script>
+</div>
 
-    <script src="js/utils.js"></script>
-    <script src="js/interesesSimples.js"></script>
-    <script src="js/interesesCompuestos.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/futuro-simulador.js"></script>
-    <script src="js/tutor.js"></script>
+<!-- SCRIPTS -->
 
-    <script src="js/pregunatasJuego.js"></script>
-    <script src="js/teoria.js"></script>
-    <script src="js/juego.js"></script>
-  </body>
+<script src="js/navegacion.js"></script>
+
+</body>
 </html>

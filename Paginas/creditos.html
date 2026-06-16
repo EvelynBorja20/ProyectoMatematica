@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Créditos - FinanceLab Pro</title>
+
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- NAVBAR PRINCIPAL -->
+      <header class="navbar">
+        <div class="nav-logo">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>FinanceLab-Matemática 1</span>
+        </div>
+
+        <button class="menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="nav-menu">
+          <a class="nav-link" href="../index.html">
+            <i class="fa-solid fa-house"></i>
+            Inicio
+          </a>
+
+          <a class="nav-link" href="teoria.html">
+            <i class="fa-solid fa-book"></i>
+            Teoría
+          </a>
+
+          <a class="nav-link" href="calculadoras.html">
+            <i class="fa-solid fa-calculator"></i>
+            Calculadoras
+          </a>
+
+          <a class="nav-link" href="simulador.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            Simulador
+          </a>
+
+          <a class="nav-link" href="quiz.html">
+            <i class="fa-solid fa-clipboard-question"></i>
+            Quiz
+          </a>
+        </nav>
+
+        <div class="nav-right">
+          <button id="theme-toggle">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <div class="avatar">US</div>
+        </div>
+      </header>
+
+      <!-- SUBMENÚ DEL SIMULADOR -->
+
+      <section class="subnav">
+        <a href="simulador.html" class="subnav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          Futuro Financiero
+        </a>
+
+        <a href="clientes.html" class="subnav-item">
+          <i class="fa-solid fa-users"></i>
+          Clientes
+        </a>
+
+        <a href="creditos.html" class="subnav-item active">
+          <i class="fa-solid fa-money-bill"></i>
+          Créditos
+        </a>
+
+        <a href="pagos.html" class="subnav-item">
+          <i class="fa-solid fa-cash-register"></i>
+          Pagos
+        </a>
+      </section>
+
+      <!-- MAIN -->
+      <main class="main">
+        <section id="simulator" class="panel simulator-panel">
+          <h3>
+            <i class="fa-solid fa-calculator"></i>
+            Simulación y Administración de Créditos
+          </h3>
+
+          <p class="panel-description">
+            Calcula de manera automatizada las cuotas basándote en los esquemas
+            de matemática financiera.
+          </p>
+
+          <div
+            class="calc-form"
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px"
+          >
+            <div class="input-group">
+              <label>Monto Solicitado ($)</label>
+              <input
+                type="number"
+                id="loan-amount"
+                placeholder="Ej: 5000"
+                min="1"
+              />
+            </div>
+
+            <div class="input-group">
+              <label>Plazo del Crédito (Meses)</label>
+              <input
+                type="number"
+                id="loan-months"
+                placeholder="Ej: 12"
+                min="1"
+              />
+            </div>
+
+            <div class="input-group">
+              <label>Tasa de Interés Anual (%)</label>
+              <input
+                type="number"
+                id="loan-rate"
+                placeholder="Ej: 15.5"
+                step="0.1"
+              />
+            </div>
+
+            <div class="input-group">
+              <label>Tipo de Amortización</label>
+
+              <select
+                id="loan-type"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 14px;
+                  background: #0f172a;
+                  color: white;
+                "
+              >
+                <option value="francesa">Sistema Francés (Cuota Fija)</option>
+
+                <option value="alemana">
+                  Sistema Alemán (Amortización Fija)
+                </option>
+              </select>
+            </div>
+
+            <button
+              id="calc-loan"
+              style="
+                grid-column: span 2;
+                padding: 15px;
+                border: none;
+                border-radius: 14px;
+                background: #7ed957;
+                font-weight: bold;
+                cursor: pointer;
+              "
+            >
+              Generar Tabla de Amortización
+            </button>
+          </div>
+
+          <!-- RESULTADOS -->
+
+          <div
+            class="result-box"
+            id="quick-results"
+            style="display: none; margin-top: 20px"
+          >
+            <h4>Valores Calculados Automáticamente</h4>
+
+            <p>
+              Cuota Mensual:
+              <span id="res-cuota">--</span>
+            </p>
+
+            <p>
+              Total Interés:
+              <span id="res-interes">--</span>
+            </p>
+
+            <p>
+              Capital:
+              <span id="res-capital-total">--</span>
+            </p>
+
+            <p>
+              Costo Total:
+              <span id="res-total">--</span>
+            </p>
+          </div>
+
+          <!-- TABLA -->
+
+          <div
+            id="table-container"
+            style="display: none; margin-top: 25px; overflow-x: auto"
+          >
+            <h4>Tabla de Amortización</h4>
+
+            <table
+              id="amortization-table"
+              style="width: 100%; border-collapse: collapse; margin-top: 10px"
+            >
+              <thead>
+                <tr style="background: #007bff; color: white">
+                  <th>N°</th>
+                  <th>Fecha</th>
+                  <th>Capital</th>
+                  <th>Interés</th>
+                  <th>Cuota</th>
+                  <th>Saldo</th>
+                </tr>
+              </thead>
+
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>FinanceLab Pro © 2026</p>
+        </footer>
+      </main>
+    </div>
+    <!-- SCRIPTS -->
+
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/animations.js"></script>
+
+    <!-- Cuando crees el archivo -->
+    <!-- <script src="../js/creditos.js"></script> -->
+  </body>
+</html>
