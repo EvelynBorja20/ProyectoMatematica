@@ -7,9 +7,12 @@ function obtenerNumero(id) {
 }
 
 function formatearDinero(valor) {
-  return "$ " + valor.toFixed(2);
-}
+  if (isNaN(valor)) {
+    return "$ 0.00";
+  }
 
+  return "$ " + Number(valor).toFixed(2);
+}
 function mostrarResultado(id, valor) {
   document.getElementById(id).textContent = valor;
 }
