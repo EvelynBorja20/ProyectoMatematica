@@ -16,14 +16,16 @@ function guardarLocalStorage() {
 // BUSCAR CRÉDITO
 // =======================
 
-function buscarCredito(cedula) {
+function buscarCreditos(cedula) {
+  let lista = [];
+
   for (let i = 0; i < creditos.length; i++) {
     if (creditos[i].cedula == cedula) {
-      return creditos[i];
+      lista.push(creditos[i]);
     }
   }
 
-  return null;
+  return lista;
 }
 
 // =======================
@@ -38,127 +40,74 @@ function buscarClientePago() {
     return;
   }
 
-  let credito = buscarCredito(cedula);
+  let listaCreditos = buscarCreditos(cedula);
 
-  if (credito == null) {
+  if (listaCreditos.length == 0) {
     alert("El cliente no tiene créditos");
     return;
   }
-  if (credito.estado == "Pagado") {
-    alert("Este crédito ya está pagado");
+
+  let contenedor = document.getElementById("lista-creditos");
+
+  let html = "";
+
+  for (let i = 0; i < listaCreditos.length; i++) {
+    html += `
+  <button
+    id="credito-${i}"
+    class="btn-credito"
+    onclick="seleccionarCredito(${i})">
+    Crédito ${i + 1}
+  </button>
+`;
   }
-  creditoSeleccionado = credito;
-  if (!credito.cuotas) {
-    alert("Este crédito fue creado con una versión antigua");
-    return;
-  }
+
+  contenedor.innerHTML = html;
+
+  seleccionarCredito(0);
+}
+function seleccionarCredito(indice) {
+  let cedula = document.getElementById("payment-client-id").value.trim();
+
+  let listaCreditos = buscarCreditos(cedula);
+
+  creditoSeleccionado = listaCreditos[indice];
+
   document.getElementById("payment-client-card").style.display = "block";
 
-  document.getElementById("payment-id").textContent = credito.cedula;
+  document.getElementById("payment-id").textContent =
+    creditoSeleccionado.cedula;
 
-  document.getElementById("payment-name").textContent = credito.nombre;
+  document.getElementById("payment-name").textContent =
+    creditoSeleccionado.nombre;
 
-  document.getElementById("payment-credit").textContent = formatearDinero(
-    credito.monto,
-  );
+ 
 
   document.getElementById("payment-balance").textContent = formatearDinero(
-    credito.saldo,
+    creditoSeleccionado.saldo,
   );
 
-  document.getElementById("payment-cuota").textContent = formatearDinero(
-    credito.cuota,
-  );
 
-  document.getElementById("payment-credit-status").textContent = credito.estado;
-  document.getElementById("remaining-balance").textContent = formatearDinero(
-    credito.saldo,
-  );
 
-  document.getElementById("payment-status").textContent = credito.estado;
-  pintarPagos();
-}
-
-// =======================
-// PROCESAR PAGO
-// =======================
-
-function procesarPago() {
-  if (creditoSeleccionado == null) {
-    alert("Busque un cliente");
-    return;
-  }
-
-  let numeroCuota = obtenerNumero("payment-installment");
-  numeroCuota = parseInt(numeroCuota);
-
-  if (isNaN(numeroCuota) || numeroCuota <= 0) {
-    alert("Ingrese una cuota válida");
-    return;
-  }
-
-  if (numeroCuota > creditoSeleccionado.plazo) {
-    alert("La cuota no existe");
-    return;
-  }
-
-  let cuota = creditoSeleccionado.cuotas[numeroCuota - 1];
-
-  if (cuota.estado == "Pagada") {
-    alert("La cuota ya fue pagada");
-    return;
-  }
-
-  if (creditoSeleccionado.saldo <= 0) {
-    alert("El crédito ya está pagado");
-    return;
-  }
-  cuota.estado = "Pagada";
-  cuota.fecha = new Date().toLocaleDateString("es-EC");
-  creditoSeleccionado.saldo =
-    creditoSeleccionado.saldo - creditoSeleccionado.cuota;
-
-  if (creditoSeleccionado.saldo < 0) {
-    creditoSeleccionado.saldo = 0;
-  }
-
-  if (creditoSeleccionado.saldo == 0) {
-    creditoSeleccionado.estado = "Pagado";
-  }
   document.getElementById("payment-credit-status").textContent =
     creditoSeleccionado.estado;
+ 
 
-  let pago = {
-    cedula: creditoSeleccionado.cedula,
-    cuota: numeroCuota,
-    fecha: new Date().toLocaleDateString(),
-    valor: creditoSeleccionado.cuota,
-    estado: "Pagado",
-  };
-
-  pagos.push(pago);
-
-  guardarLocalStorage();
-
-  document.getElementById("payment-result").style.display = "block";
+  document.getElementById("remaining-balance").textContent = formatearDinero(
+    creditoSeleccionado.saldo,
+  );
 
   document.getElementById("payment-status").textContent =
     creditoSeleccionado.estado;
+  let botones = document.querySelectorAll(".btn-credito");
 
-  document.getElementById("remaining-balance").textContent = formatearDinero(
-    creditoSeleccionado.saldo,
-  );
+  for (let i = 0; i < botones.length; i++) {
+    botones[i].classList.remove("activo");
+  }
 
-  document.getElementById("payment-balance").textContent = formatearDinero(
-    creditoSeleccionado.saldo,
-  );
-
+  document.getElementById(`credito-${indice}`).classList.add("activo");
   pintarPagos();
-
-  alert("Pago registrado");
-  document.getElementById("payment-installment").value = "";
 }
-
 // =======================
 // PINTAR PAGOS
 // =======================
@@ -180,8 +129,15 @@ function pintarPagos() {
         <td>${formatearDinero(cuota.valor)}</td>
         <td>${cuota.estado}</td>
         <td>
-          ${cuota.estado == "Pagada" ? "✓" : "⏳"}
-        </td>
+  ${
+    cuota.estado == "Pagada"
+      ? '<span class="pagada">✓</span>'
+      : `<button class="btn-pagar"
+        onclick="pagarCuota(${cuota.numero})">
+  Pagar
+</button>`
+  }
+</td>
       </tr>
     `;
   }
@@ -189,6 +145,51 @@ function pintarPagos() {
   tabla.innerHTML = contenido;
 }
 
+function pagarCuota(numeroCuota) {
+  let cuota = creditoSeleccionado.cuotas[numeroCuota - 1];
+
+  if (cuota.estado == "Pagada") {
+    return;
+  }
+
+  cuota.estado = "Pagada";
+
+  cuota.fecha = new Date().toLocaleDateString("es-EC");
+
+  creditoSeleccionado.saldo = 0;
+
+  for (let i = 0; i < creditoSeleccionado.cuotas.length; i++) {
+    if (creditoSeleccionado.cuotas[i].estado == "Pendiente") {
+      creditoSeleccionado.saldo += creditoSeleccionado.cuotas[i].valor;
+    }
+  }
+
+  if (creditoSeleccionado.saldo < 0) {
+    creditoSeleccionado.saldo = 0;
+  }
+
+  if (creditoSeleccionado.saldo == 0) {
+    creditoSeleccionado.estado = "Pagado";
+  }
+
+  guardarLocalStorage();
+
+  document.getElementById("payment-balance").textContent = formatearDinero(
+    creditoSeleccionado.saldo,
+  );
+
+  document.getElementById("payment-credit-status").textContent =
+    creditoSeleccionado.estado;
+
+  document.getElementById("remaining-balance").textContent = formatearDinero(
+    creditoSeleccionado.saldo,
+  );
+
+  document.getElementById("payment-status").textContent =
+    creditoSeleccionado.estado;
+
+  pintarPagos();
+}
 // =======================
 // EVENTOS
 // =======================
@@ -196,7 +197,3 @@ function pintarPagos() {
 document
   .getElementById("search-payment-client")
   .addEventListener("click", buscarClientePago);
-
-document
-  .getElementById("process-payment")
-  .addEventListener("click", procesarPago);

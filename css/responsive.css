@@ -361,3 +361,13 @@ MOVILES PEQUEÑOS
     }
 
 }
+
+@media (max-width: 768px) {
+  .payment-top {
+    flex-direction: column;
+  }
+
+  .credit-client-card {
+    width: 100%;
+  }
+}

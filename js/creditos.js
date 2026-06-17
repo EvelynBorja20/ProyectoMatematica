@@ -161,6 +161,13 @@ function calcularCredito() {
   let disponible = clienteSeleccionado.ingresos - clienteSeleccionado.egresos;
 
   let capacidadPago = disponible * 0.4;
+  let cuotasActuales = calcularCuotasActivas(clienteSeleccionado.cedula);
+
+  let capacidadDisponible = capacidadPago - cuotasActuales;
+
+  if (capacidadDisponible < 0) {
+    capacidadDisponible = 0;
+  }
 
   // Interés simple anual 15%
 
@@ -179,7 +186,7 @@ function calcularCredito() {
   document.getElementById("credit-result").style.display = "block";
 
   document.getElementById("capacity-payment").textContent =
-    formatearDinero(capacidadPago);
+    formatearDinero(capacidadDisponible);
 
   document.getElementById("total-payment").textContent =
     formatearDinero(totalPagar);
@@ -187,7 +194,7 @@ function calcularCredito() {
   document.getElementById("monthly-payment").textContent =
     formatearDinero(cuota);
 
-  if (cuota <= capacidadPago) {
+  if (capacidadDisponible > 0 && cuota <= capacidadDisponible) {
     creditoAprobado = true;
     document.getElementById("credit-status").textContent =
       "RESULTADO: APROBADO";
@@ -212,19 +219,6 @@ function guardarLocalStorage() {
 }
 
 // =========================
-// verficar creditos
-// =========================
-
-function tieneCredito(cedula) {
-  for (let i = 0; i < creditos.length; i++) {
-    if (creditos[i].cedula == cedula) {
-      return true;
-    }
-  }
-
-  return false;
-}
-// =========================
 // sOLICITAR CREDITOS
 // =========================
 function solicitarCredito() {
@@ -237,50 +231,49 @@ function solicitarCredito() {
     alert("El crédito no está aprobado");
     return;
   }
-
-  if (tieneCredito(clienteSeleccionado.cedula)) {
-    alert("El cliente ya tiene un crédito");
+  if (montoCalculado <= 0 || plazoCalculado <= 0) {
+    alert("Primero calcule el crédito");
     return;
   }
-  let tipo = document.querySelector(
-  'input[name="credit-type"]:checked'
-).value;
+  //SOLO ME DEJA CREAR UN CREDITO
+  // if (tieneCredito(clienteSeleccionado.cedula)) {
+  // alert("El cliente ya tiene un crédito");
+  //return;
+  //}
+  let tipo = document.querySelector('input[name="credit-type"]:checked').value;
 
-// Crear las cuotas del crédito
-let cuotas = [];
+  // Crear las cuotas del crédito
+  let cuotas = [];
 
-for (let i = 1; i <= plazoCalculado; i++) {
+  for (let i = 1; i <= plazoCalculado; i++) {
+    cuotas.push({
+      numero: i,
+      valor: cuotaCalculada,
+      estado: "Pendiente",
+    });
+  }
 
-  cuotas.push({
-    numero: i,
-    valor: cuotaCalculada,
-    estado: "Pendiente"
-  });
+  let credito = {
+    cedula: clienteSeleccionado.cedula,
 
-}
+    nombre: clienteSeleccionado.nombre,
 
-let credito = {
-  cedula: clienteSeleccionado.cedula,
+    monto: montoCalculado,
 
-  nombre: clienteSeleccionado.nombre,
+    plazo: plazoCalculado,
 
-  monto: montoCalculado,
+    cuota: cuotaCalculada,
 
-  plazo: plazoCalculado,
+    saldo: montoCalculado,
 
-  cuota: cuotaCalculada,
+    tasa: 15,
 
-  saldo: montoCalculado,
+    tipo: tipo,
 
-  tasa: 15,
+    estado: "Activo",
 
-  tipo: tipo,
-
-  estado: "Activo",
-
-  cuotas: cuotas
-};
-   
+    cuotas: cuotas,
+  };
 
   creditos.push(credito);
 
@@ -293,9 +286,35 @@ let credito = {
   clienteSeleccionado = null;
 
   document.getElementById("credit-client-card").style.display = "none";
+  document.getElementById("show-id").textContent = "--";
+  document.getElementById("show-name").textContent = "--";
+  document.getElementById("show-income").textContent = "0";
+  document.getElementById("show-expenses").textContent = "0";
+
   document.getElementById("credit-result").style.display = "none";
 
   document.getElementById("amortization-body").innerHTML = "";
+  document.getElementById("credit-client-id").value = "";
+  cuotaCalculada = 0;
+  montoCalculado = 0;
+  plazoCalculado = 0;
+  creditoAprobado = false;
+}
+
+// =========================
+// Cuotas activas
+// =========================
+
+function calcularCuotasActivas(cedula) {
+  let total = 0;
+
+  for (let i = 0; i < creditos.length; i++) {
+    if (creditos[i].cedula == cedula && creditos[i].estado == "Activo") {
+      total += creditos[i].cuota;
+    }
+  }
+
+  return total;
 }
 // =========================
 // EVENTOS

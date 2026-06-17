@@ -43,7 +43,6 @@
         </div>
       </header>
       <section class="subnav">
-        
         <a href="clientes.html" class="subnav-item"> Clientes </a>
 
         <a href="creditos.html" class="subnav-item"> Créditos </a>
@@ -58,66 +57,68 @@
           <p class="panel-description">
             Consulta créditos activos y registra pagos de cuotas.
           </p>
+          
 
           <!-- BUSCAR CLIENTE -->
 
-          <div class="credit-search">
-            <div class="input-group">
-              <input
-                type="text"
-                id="payment-client-id"
-                placeholder="Ingrese la cédula del cliente"
-              />
+          <div class="payment-top">
+            <div class="payment-left">
+              <div class="credit-search">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    id="payment-client-id"
+                    placeholder="Ingrese la cédula del cliente"
+                  />
+                </div>
+
+                <button id="search-payment-client">Buscar cliente</button>
+              </div>
+
+              <div id="lista-creditos" class="credit-buttons"></div>
             </div>
 
-            <button id="search-payment-client">Buscar cliente</button>
+            <div
+              class="credit-client-card"
+              id="payment-client-card"
+              style="display: none"
+            >
+              <h4>Crédito seleccionado</h4>
+
+              <p><strong>Cliente:</strong> <span id="payment-name">--</span></p>
+
+              <p><strong>Cédula:</strong> <span id="payment-id">--</span></p>
+
+              <p>
+                <strong>Saldo:</strong>
+                $<span id="payment-balance">0</span>
+              </p>
+
+              <p>
+                <strong>Estado:</strong>
+                <span id="payment-credit-status">--</span>
+              </p>
+            </div>
           </div>
 
+          <div class="table-credit-container">
+            <h4>Tabla de amortización</h4>
+
+            <table class="clients-table">
+              <thead>
+                <tr>
+                  <th>Cuota</th>
+                  <th>Fecha</th>
+                  <th>Valor</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+
+              <tbody id="payment-body"></tbody>
+            </table>
+          </div>
           <!-- DATOS DEL CLIENTE -->
-
-          <div
-            class="credit-client-card"
-            id="payment-client-card"
-            style="display: none"
-          >
-            <h4>Crédito activo</h4>
-
-            <p><strong>Cédula:</strong> <span id="payment-id">--</span></p>
-
-            <p><strong>Cliente:</strong> <span id="payment-name">--</span></p>
-
-            <p><strong>Crédito:</strong> $<span id="payment-credit">0</span></p>
-
-            <p>
-              <strong>Saldo pendiente:</strong> $<span id="payment-balance"
-                >0</span
-              >
-            </p>
-
-            <p>
-              <strong>Cuota mensual:</strong> $<span id="payment-cuota">0</span>
-            </p>
-            <p>
-              <strong>Estado:</strong>
-              <span id="payment-credit-status"> Al día </span>
-            </p>
-          </div>
-
-          <!-- FORMULARIO -->
-
-          <div class="calc-form">
-            <div class="input-group">
-              <input
-                type="number"
-                id="payment-installment"
-                placeholder="Número de cuota"
-              />
-            </div>
-
-            <div class="credit-buttons">
-              <button id="process-payment">Procesar pago</button>
-            </div>
-          </div>
 
           <!-- RESULTADO -->
 
@@ -134,36 +135,6 @@
           </div>
 
           <!-- HISTORIAL -->
-
-          <div
-            class="table-credit-container"
-            id="payment-history"
-            style="display: block"
-          >
-            <h4>Historial de Pagos</h4>
-
-            <table class="clients-table">
-              <thead>
-                <tr>
-                  <th>Cuota</th>
-                  <th>Fecha</th>
-                  <th>Valor</th>
-                  <th>Estado</th>
-                  <th>Acción</th>
-                </tr>
-              </thead>
-
-              <tbody id="payment-body">
-                <tr>
-                  <td>1</td>
-                  <td>17/06/2026</td>
-                  <td>$250</td>
-                  <td>Pagado</td>
-                  <td>✓</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </section>
 
         <footer class="footer">
@@ -180,6 +151,6 @@
     <script src="../js/theme.js"></script>
     <script src="../js/animations.js"></script>
     <script src="../js/pagos.js"></script>
-
   </body>
 </html>
+s
