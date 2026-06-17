@@ -1,151 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FinanceLab Pro</title>
 
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
 
-<body>
-
-<div class="dashboard">
-
-    <!-- NAVBAR -->
-    <header class="navbar">
-
+  <body>
+    <div class="dashboard">
+      <!-- NAVBAR -->
+      <header class="navbar">
         <div class="nav-logo">
-            <i class="fa-solid fa-chart-line"></i>
-            <span>FinanceLab-Matemática 1</span>
+          <span>FinanceLab Pro</span>
         </div>
 
-        <button class="menu-btn">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <button class="menu-btn"></button>
 
         <nav class="nav-menu">
+          <a class="nav-link active" href="index.html"> Inicio </a>
 
-            <a class="nav-link active" href="index.html">
-                <i class="fa-solid fa-house"></i>
-                Inicio
-            </a>
+          <a class="nav-link" href="Paginas/teoria.html"> Teoría </a>
 
-            <a class="nav-link" href="Paginas/teoria.html">
-                <i class="fa-solid fa-book"></i>
-                Teoría
-            </a>
+          <a class="nav-link" href="Paginas/calculadoras.html">
+            Calculadoras
+          </a>
 
-            <a class="nav-link" href="Paginas/calculadoras.html">
-                <i class="fa-solid fa-calculator"></i>
-                Calculadoras
-            </a>
+          <a class="nav-link" href="Paginas/simulador.html"> Simulador </a>
 
-            <a class="nav-link" href="Paginas/simulador.html">
-                <i class="fa-solid fa-chart-pie"></i>
-                Simulador
-            </a>
-
-            <a class="nav-link" href="Paginas/quiz.html">
-                <i class="fa-solid fa-clipboard-question"></i>
-                Quiz
-            </a>
-
+          <a class="nav-link" href="Paginas/quiz.html"> Quiz </a>
         </nav>
 
         <div class="nav-right">
-            <div class="avatar">US</div>
+          <div class="avatar">US</div>
         </div>
+      </header>
 
-    </header>
-
-    <!-- MAIN -->
-    <main class="main">
-
+      <main class="main">
         <!-- HERO -->
         <section class="hero">
+          <div class="hero-content">
+            <h2>Aprende Matemática Financiera con herramientas interactivas</h2>
 
-            <div>
+            <p>
+              Plataforma educativa para comprender cálculos financieros,
+              simulaciones, créditos y toma de decisiones económicas.
+            </p>
 
-                <h2>
-                    Aprende Matemática Financiera
-                    con herramientas interactivas
-                </h2>
-
-                <p>
-                    Plataforma educativa para comprender
-                    cálculos financieros, simulaciones y
-                    decisiones económicas.
-                </p>
-
-                <a href="Paginas/calculadoras.html"
-                   class="hero-btn">
-                    Explorar Plataforma
-                </a>
-
-            </div>
-
+            <a href="Paginas/calculadoras.html" class="hero-btn">
+              Explorar Plataforma
+            </a>
+          </div>
         </section>
 
         <!-- MÉTRICAS -->
 
         <section class="metrics">
+          <div class="metric-card">
+            <h4>Interés</h4>
+            <p>Simple</p>
+          </div>
 
-            <div class="metric-card">
-                <h4>Interés</h4>
-                <p>Simple</p>
-            </div>
+          <div class="metric-card">
+            <h4>Créditos</h4>
+            <p>Banco</p>
+          </div>
 
-            <div class="metric-card">
-                <h4>Créditos</h4>
-                <p>Banco</p>
-            </div>
+          <div class="metric-card">
+            <h4>Quiz</h4>
+            <p>Aprende</p>
+          </div>
 
-            <div class="metric-card">
-                <h4>Quiz</h4>
-                <p>Aprende</p>
-            </div>
-
-            <div class="metric-card">
-                <h4>Simulación</h4>
-                <p>Finanzas</p>
-            </div>
-
+          <div class="metric-card">
+            <h4>Simulación</h4>
+            <p>Finanzas</p>
+          </div>
         </section>
 
         <!-- BIENVENIDA -->
 
         <section class="panel">
+          <h3>Bienvenido a FinanceLab Pro</h3>
 
-            <h3>Bienvenido a FinanceLab Pro</h3>
-
-            <p class="panel-description">
-                Explora conceptos de matemática financiera,
-                realiza simulaciones, administra créditos
-                y evalúa tus conocimientos mediante
-                herramientas interactivas.
-            </p>
-
+          <p class="panel-description">
+            Explora conceptos de matemática financiera, realiza simulaciones,
+            administra créditos y fortalece tus conocimientos con herramientas
+            interactivas.
+          </p>
         </section>
 
-        <!-- FOOTER -->
-
         <footer class="footer">
-            <p>FinanceLab Pro © 2026</p>
+          <p>FinanceLab Pro © 2026</p>
         </footer>
+      </main>
+    </div>
 
-    </main>
-
-</div>
-
-<!-- SCRIPTS -->
-
-<script src="js/navegacion.js"></script>
-
-</body>
+    <script src="js/navegacion.js"></script>
+  </body>
 </html>

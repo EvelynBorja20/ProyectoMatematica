@@ -20,45 +20,25 @@
       <!-- NAVBAR PRINCIPAL -->
       <header class="navbar">
         <div class="nav-logo">
-          <i class="fa-solid fa-chart-line"></i>
           <span>FinanceLab-Matemática 1</span>
         </div>
 
-        <button class="menu-btn">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <button class="menu-btn"></button>
 
         <nav class="nav-menu">
-          <a class="nav-link" href="../index.html">
-            <i class="fa-solid fa-house"></i>
-            Inicio
-          </a>
+          <a class="nav-link" href="../index.html"> Inicio </a>
 
-          <a class="nav-link" href="teoria.html">
-            <i class="fa-solid fa-book"></i>
-            Teoría
-          </a>
+          <a class="nav-link" href="teoria.html"> Teoría </a>
 
-          <a class="nav-link" href="calculadoras.html">
-            <i class="fa-solid fa-calculator"></i>
-            Calculadoras
-          </a>
+          <a class="nav-link" href="calculadoras.html"> Calculadoras </a>
 
-          <a class="nav-link" href="simulador.html">
-            <i class="fa-solid fa-chart-pie"></i>
-            Simulador
-          </a>
+          <a class="nav-link" href="simulador.html"> Simulador </a>
 
-          <a class="nav-link" href="quiz.html">
-            <i class="fa-solid fa-clipboard-question"></i>
-            Quiz
-          </a>
+          <a class="nav-link" href="quiz.html"> Quiz </a>
         </nav>
 
         <div class="nav-right">
-          <button id="theme-toggle">
-            <i class="fa-solid fa-moon"></i>
-          </button>
+          <button id="theme-toggle"></button>
 
           <div class="avatar">US</div>
         </div>
@@ -67,165 +47,163 @@
       <!-- SUBMENÚ DEL SIMULADOR -->
 
       <section class="subnav">
-        <a href="simulador.html" class="subnav-item">
-          <i class="fa-solid fa-chart-line"></i>
-          Futuro Financiero
-        </a>
+        <a href="simulador.html" class="subnav-item"> Futuro Financiero </a>
 
-        <a href="clientes.html" class="subnav-item">
-          <i class="fa-solid fa-users"></i>
-          Clientes
-        </a>
+        <a href="clientes.html" class="subnav-item"> Clientes </a>
 
-        <a href="creditos.html" class="subnav-item active">
-          <i class="fa-solid fa-money-bill"></i>
-          Créditos
-        </a>
+        <a href="creditos.html" class="subnav-item active"> Créditos </a>
 
-        <a href="pagos.html" class="subnav-item">
-          <i class="fa-solid fa-cash-register"></i>
-          Pagos
-        </a>
+        <a href="pagos.html" class="subnav-item"> Pagos </a>
       </section>
 
       <!-- MAIN -->
       <main class="main">
         <section id="simulator" class="panel simulator-panel">
-          <h3>
-            <i class="fa-solid fa-calculator"></i>
-            Simulación y Administración de Créditos
-          </h3>
+          <h3>Simulación y Administración de Créditos</h3>
 
           <p class="panel-description">
             Calcula de manera automatizada las cuotas basándote en los esquemas
             de matemática financiera.
           </p>
-
-          <div
-            class="calc-form"
-            style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px"
-          >
+          <div class="credit-search">
             <div class="input-group">
-              <label>Monto Solicitado ($)</label>
               <input
-                type="number"
-                id="loan-amount"
-                placeholder="Ej: 5000"
-                min="1"
+                type="text"
+                id="credit-client-id"
+                placeholder="1722965892"
               />
             </div>
 
-            <div class="input-group">
-              <label>Plazo del Crédito (Meses)</label>
-              <input
-                type="number"
-                id="loan-months"
-                placeholder="Ej: 12"
-                min="1"
-              />
-            </div>
-
-            <div class="input-group">
-              <label>Tasa de Interés Anual (%)</label>
-              <input
-                type="number"
-                id="loan-rate"
-                placeholder="Ej: 15.5"
-                step="0.1"
-              />
-            </div>
-
-            <div class="input-group">
-              <label>Tipo de Amortización</label>
-
-              <select
-                id="loan-type"
-                style="
-                  width: 100%;
-                  padding: 10px;
-                  border-radius: 14px;
-                  background: #0f172a;
-                  color: white;
-                "
-              >
-                <option value="francesa">Sistema Francés (Cuota Fija)</option>
-
-                <option value="alemana">
-                  Sistema Alemán (Amortización Fija)
-                </option>
-              </select>
-            </div>
-
-            <button
-              id="calc-loan"
-              style="
-                grid-column: span 2;
-                padding: 15px;
-                border: none;
-                border-radius: 14px;
-                background: #7ed957;
-                font-weight: bold;
-                cursor: pointer;
-              "
-            >
-              Generar Tabla de Amortización
-            </button>
+            <button id="search-client-btn">Buscar cliente</button>
           </div>
 
-          <!-- RESULTADOS -->
-
           <div
-            class="result-box"
-            id="quick-results"
-            style="display: none; margin-top: 20px"
+            class="credit-client-card"
+            id="credit-client-card"
+            style="display: none"
           >
-            <h4>Valores Calculados Automáticamente</h4>
+            <h4>Cliente encontrado</h4>
 
-            <p>
-              Cuota Mensual:
-              <span id="res-cuota">--</span>
-            </p>
+            <p><strong>Cédula:</strong> <span id="show-id">--</span></p>
 
-            <p>
-              Total Interés:
-              <span id="res-interes">--</span>
-            </p>
+            <p><strong>Nombre:</strong> <span id="show-name">--</span></p>
 
-            <p>
-              Capital:
-              <span id="res-capital-total">--</span>
-            </p>
+            <p><strong>Ingresos:</strong> $<span id="show-income">0</span></p>
 
-            <p>
-              Costo Total:
-              <span id="res-total">--</span>
-            </p>
+            <p><strong>Egresos:</strong> $<span id="show-expenses">0</span></p>
           </div>
 
-          <!-- TABLA -->
+          <div class="calc-form">
+            <div class="input-group">
+              <input
+                type="number"
+                id="credit-amount"
+                placeholder="Valor del crédito"
+              />
+            </div>
+
+            <div class="input-group">
+              <input
+                type="number"
+                id="credit-months"
+                placeholder="Plazo en meses"
+              />
+            </div>
+
+            <div class="input-group">
+              <label>Tipo de amortización</label>
+
+              <div class="credit-radio-group">
+                <label class="radio-card">
+                  <input
+                    type="radio"
+                    name="credit-type"
+                    value="frances"
+                    checked
+                  />
+
+                  <span>Sistema Francés</span>
+                </label>
+
+                <label class="radio-card">
+                  <input type="radio" name="credit-type" value="aleman" />
+
+                  <span>Sistema Alemán</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="credit-buttons">
+              <button id="calculate-credit">Calcular crédito</button>
+
+              <button id="save-credit">Solicitar crédito</button>
+            </div>
+          </div>
+
+          <div class="credit-result" id="credit-result" style="display: none">
+            <p>
+              Capacidad de pago:
+              <strong id="capacity-payment">0</strong>
+            </p>
+
+            <p>
+              Total a pagar:
+              <strong id="total-payment">0</strong>
+            </p>
+
+            <p>
+              Cuota mensual:
+              <strong id="monthly-payment">0</strong>
+            </p>
+
+            <hr />
+
+            <h4 id="credit-status">RESULTADO: APROBADO</h4>
+          </div>
 
           <div
-            id="table-container"
-            style="display: none; margin-top: 25px; overflow-x: auto"
+            class="table-credit-container"
+            id="table-credit-container"
+            style="display: block"
           >
             <h4>Tabla de Amortización</h4>
 
-            <table
-              id="amortization-table"
-              style="width: 100%; border-collapse: collapse; margin-top: 10px"
-            >
+            <table class="clients-table">
               <thead>
-                <tr style="background: #007bff; color: white">
-                  <th>N°</th>
-                  <th>Fecha</th>
+                <tr>
+                  <th>Cuota</th>
                   <th>Capital</th>
                   <th>Interés</th>
-                  <th>Cuota</th>
+                  <th>Pago</th>
                   <th>Saldo</th>
                 </tr>
               </thead>
 
-              <tbody></tbody>
+              <tbody id="amortization-body">
+                <tr>
+                  <td>1</td>
+                  <td>$500</td>
+                  <td>$50</td>
+                  <td>$550</td>
+                  <td>$4,500</td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td>$500</td>
+                  <td>$45</td>
+                  <td>$545</td>
+                  <td>$4,000</td>
+                </tr>
+
+                <tr>
+                  <td>3</td>
+                  <td>$500</td>
+                  <td>$40</td>
+                  <td>$540</td>
+                  <td>$3,500</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </section>

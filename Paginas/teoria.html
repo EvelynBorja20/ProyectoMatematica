@@ -1,241 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teoría - FinanceLab Pro</title>
 
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
 
-<body>
-
-<div class="dashboard">
-
-    <!-- NAVBAR -->
-    <header class="navbar">
-
+  <body>
+    <div class="dashboard">
+      <!-- NAVBAR -->
+      <header class="navbar">
         <div class="nav-logo">
-            <i class="fa-solid fa-chart-line"></i>
-            <span>FinanceLab-Matemática 1</span>
+          <span>FinanceLab-Matemática 1</span>
         </div>
 
-        <button class="menu-btn">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <button class="menu-btn"></button>
 
         <nav class="nav-menu">
-            <a class="nav-link" href="../index.html">
-                <i class="fa-solid fa-house"></i>
-                Inicio
-            </a>
+          <a class="nav-link" href="../index.html"> Inicio </a>
 
-            <a class="nav-link active" href="teoria.html">
-                <i class="fa-solid fa-book"></i>
-                Teoría
-            </a>
+          <a class="nav-link active" href="teoria.html"> Teoría </a>
 
-            <a class="nav-link" href="calculadoras.html">
-                <i class="fa-solid fa-calculator"></i>
-                Calculadoras
-            </a>
+          <a class="nav-link" href="calculadoras.html"> Calculadoras </a>
 
-            <a class="nav-link" href="simulador.html">
-                <i class="fa-solid fa-chart-pie"></i>
-                Simulador
-            </a>
+          <a class="nav-link" href="simulador.html"> Simulador </a>
 
-            <a class="nav-link" href="clientes.html">
-                <i class="fa-solid fa-user-plus"></i>
-                Clientes
-            </a>
-
-            <a class="nav-link" href="creditos.html">
-                <i class="fa-solid fa-money-bill"></i>
-                Créditos
-            </a>
-
-            <a class="nav-link" href="pagos.html">
-                <i class="fa-solid fa-cash-register"></i>
-                Pagos
-            </a>
-
-            <a class="nav-link" href="quiz.html">
-                <i class="fa-solid fa-clipboard-question"></i>
-                Quiz
-            </a>
+          <a class="nav-link" href="quiz.html"> Quiz </a>
         </nav>
+      </header>
 
-    </header>
-
-    <!-- MAIN -->
-    <main class="main">
-
+      <!-- MAIN -->
+      <main class="main">
         <section id="theory" class="panel theory-panel">
+          <div class="theory-header">
+            <h3>Fundamentos Financieros</h3>
 
-            <div class="theory-header">
+            <p>
+              Aprende los conceptos esenciales de matemática financiera mediante
+              teoría clara y ejemplos prácticos.
+            </p>
+          </div>
 
-                <h3>Fundamentos Financieros</h3>
+          <div class="theory-grid">
+            <!-- INTERÉS SIMPLE -->
 
-                <p>
-                    Aprende los conceptos esenciales de matemática financiera mediante teoría clara y ejemplos prácticos.
-                </p>
+            <div class="theory-card">
+              <div class="theory-icon"></div>
 
+              <h4>Interés Simple</h4>
+
+              <p>Calcula intereses únicamente sobre el capital inicial.</p>
+
+              <div class="formula">I = C × r × t</div>
+
+              <button id="demo-simple" class="theory-btn">Ver ejemplo</button>
+
+              <div id="demo-simple-box" class="demo-box">
+                Capital $1000 al 10% durante 2 años.
+                <br />
+                Interés = $200
+              </div>
             </div>
 
-            <div class="theory-grid">
+            <!-- INTERÉS COMPUESTO -->
 
-                <!-- INTERÉS SIMPLE -->
+            <div class="theory-card">
+              <div class="theory-icon"></div>
 
-                <div class="theory-card">
+              <h4>Interés Compuesto</h4>
 
-                    <div class="theory-icon">
-                        <i class="fa-solid fa-percent"></i>
-                    </div>
+              <p>Los intereses generan nuevos intereses a través del tiempo.</p>
 
-                    <h4>Interés Simple</h4>
+              <div class="formula">VF = C(1+r)^t</div>
 
-                    <p>
-                        Calcula intereses únicamente sobre el capital inicial.
-                    </p>
+              <button id="demo-compound" class="theory-btn">Ver ejemplo</button>
 
-                    <div class="formula">
-                        I = C × r × t
-                    </div>
-
-                    <button id="demo-simple"
-                            class="theory-btn">
-                        Ver ejemplo
-                    </button>
-
-                    <div id="demo-simple-box"
-                         class="demo-box">
-
-                        Capital $1000 al 10% durante 2 años.
-                        <br>
-                        Interés = $200
-
-                    </div>
-
-                </div>
-
-                <!-- INTERÉS COMPUESTO -->
-
-                <div class="theory-card">
-
-                    <div class="theory-icon">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-
-                    <h4>Interés Compuesto</h4>
-
-                    <p>
-                        Los intereses generan nuevos intereses a través del tiempo.
-                    </p>
-
-                    <div class="formula">
-                        VF = C(1+r)^t
-                    </div>
-
-                    <button id="demo-compound"
-                            class="theory-btn">
-                        Ver ejemplo
-                    </button>
-
-                    <div id="demo-compound-box"
-                         class="demo-box">
-
-                        $1000 al 10% por 2 años = $1210
-
-                    </div>
-
-                </div>
-
-                <!-- VALOR FUTURO -->
-
-                <div class="theory-card">
-
-                    <div class="theory-icon">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                    </div>
-
-                    <h4>Valor Futuro</h4>
-
-                    <p>
-                        Proyección del dinero considerando crecimiento financiero.
-                    </p>
-
-                    <div class="formula">
-                        VF = VP(1+r)^t
-                    </div>
-
-                    <button id="demo-future"
-                            class="theory-btn">
-                        Ver ejemplo
-                    </button>
-
-                    <div id="demo-future-box"
-                         class="demo-box">
-
-                        $1000 al 10% = $1100 en un año
-
-                    </div>
-
-                </div>
-
-                <!-- VALOR PRESENTE -->
-
-                <div class="theory-card">
-
-                    <div class="theory-icon">
-                        <i class="fa-solid fa-money-bill-wave"></i>
-                    </div>
-
-                    <h4>Valor Presente</h4>
-
-                    <p>
-                        Determina cuánto vale hoy un dinero futuro.
-                    </p>
-
-                    <div class="formula">
-                        VP = VF / (1+r)^t
-                    </div>
-
-                    <button id="demo-present"
-                            class="theory-btn">
-                        Ver ejemplo
-                    </button>
-
-                    <div id="demo-present-box"
-                         class="demo-box">
-
-                        $1210 futuro al 10% = $1000 hoy
-
-                    </div>
-
-                </div>
-
+              <div id="demo-compound-box" class="demo-box">
+                $1000 al 10% por 2 años = $1210
+              </div>
             </div>
 
+            <!-- VALOR FUTURO -->
+
+            <div class="theory-card">
+              <div class="theory-icon"></div>
+
+              <h4>Valor Futuro</h4>
+
+              <p>Proyección del dinero considerando crecimiento financiero.</p>
+
+              <div class="formula">VF = VP(1+r)^t</div>
+
+              <button id="demo-future" class="theory-btn">Ver ejemplo</button>
+
+              <div id="demo-future-box" class="demo-box">
+                $1000 al 10% = $1100 en un año
+              </div>
+            </div>
+
+            <!-- VALOR PRESENTE -->
+
+            <div class="theory-card">
+              <div class="theory-icon"></div>
+
+              <h4>Valor Presente</h4>
+
+              <p>Determina cuánto vale hoy un dinero futuro.</p>
+
+              <div class="formula">VP = VF / (1+r)^t</div>
+
+              <button id="demo-present" class="theory-btn">Ver ejemplo</button>
+
+              <div id="demo-present-box" class="demo-box">
+                $1210 futuro al 10% = $1000 hoy
+              </div>
+            </div>
+          </div>
         </section>
 
         <footer class="footer">
-            <p>FinanceLab Pro © 2026</p>
+          <p>FinanceLab Pro © 2026</p>
         </footer>
+      </main>
+    </div>
 
-    </main>
+    <!-- SCRIPTS -->
 
-</div>
-
-<!-- SCRIPTS -->
-
-<script src="../js/navegacion.js"></script>
-<script src="../js/teoria.js"></script>
-
-</body>
+    <script src="../js/navegacion.js"></script>
+    <script src="../js/teoria.js"></script>
+  </body>
 </html>

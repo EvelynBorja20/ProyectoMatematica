@@ -1,184 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clientes - FinanceLab Pro</title>
 
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
 
-<body>
-
-<div class="dashboard">
-
-    <!-- NAVBAR PRINCIPAL -->
-    <header class="navbar">
-
+  <body>
+    <div class="dashboard">
+      <!-- NAVBAR PRINCIPAL -->
+      <header class="navbar">
         <div class="nav-logo">
-            <i class="fa-solid fa-chart-line"></i>
-            <span>FinanceLab-Matemática 1</span>
+         
+          <span>FinanceLab-Matemática 1</span>
         </div>
 
         <button class="menu-btn">
-            <i class="fa-solid fa-bars"></i>
+          
         </button>
 
         <nav class="nav-menu">
+          <a class="nav-link" href="../index.html">
+            
+            Inicio
+          </a>
 
-            <a class="nav-link" href="../index.html">
-                <i class="fa-solid fa-house"></i>
-                Inicio
-            </a>
+          <a class="nav-link" href="teoria.html">
+            
+            Teoría
+          </a>
 
-            <a class="nav-link" href="teoria.html">
-                <i class="fa-solid fa-book"></i>
-                Teoría
-            </a>
+          <a class="nav-link" href="calculadoras.html">
+            
+            Calculadoras
+          </a>
 
-            <a class="nav-link" href="calculadoras.html">
-                <i class="fa-solid fa-calculator"></i>
-                Calculadoras
-            </a>
+          <a class="nav-link" href="simulador.html">
+            
+            Simulador
+          </a>
 
-            <a class="nav-link" href="simulador.html">
-                <i class="fa-solid fa-chart-pie"></i>
-                Simulador
-            </a>
-
-            <a class="nav-link" href="quiz.html">
-                <i class="fa-solid fa-clipboard-question"></i>
-                Quiz
-            </a>
-
+          <a class="nav-link" href="quiz.html">
+            
+            Quiz
+          </a>
         </nav>
+      </header>
 
-    </header>
+      <!-- SUBMENÚ DEL SIMULADOR -->
 
-    <!-- SUBMENÚ DEL SIMULADOR -->
-
-    <section class="subnav">
-
+      <section class="subnav">
         <a href="simulador.html" class="subnav-item">
-            <i class="fa-solid fa-chart-line"></i>
-            Futuro Financiero
+        
+          Futuro Financiero
         </a>
 
         <a href="clientes.html" class="subnav-item active">
-            <i class="fa-solid fa-users"></i>
-            Clientes
+          
+          Clientes
         </a>
 
         <a href="creditos.html" class="subnav-item">
-            <i class="fa-solid fa-money-bill"></i>
-            Créditos
+         
+          Créditos
         </a>
 
         <a href="pagos.html" class="subnav-item">
-            <i class="fa-solid fa-cash-register"></i>
-            Pagos
+       
+          Pagos
         </a>
+      </section>
 
-    </section>
-
-    <!-- MAIN -->
-    <main class="main">
-
+      <!-- MAIN -->
+      <main class="main">
         <section id="customer-register" class="panel customer-panel">
+          <h3>
+            
+            Registro de Clientes
+          </h3>
 
-            <h3>
-                <i class="fa-solid fa-user-gear"></i>
-                Registro de Clientes
-            </h3>
+          <p class="panel-description">
+            Ingresa los datos personales del solicitante para habilitar la
+            simulación del crédito.
+          </p>
 
-            <p class="panel-description">
-                Ingresa los datos personales del solicitante para habilitar la simulación del crédito.
-            </p>
+          <section id="customer-register" class="panel customer-panel">
+            <h3>Registro de Clientes</h3>
 
-            <div class="calc-form"
-                 style="display:grid;
-                        grid-template-columns:1fr 1fr;
-                        gap:15px;">
+            <div class="calc-form customer-grid">
+              <input
+                type="text"
+                id="client-id"
+                placeholder="Ingrese el número de cédula"
+              />
 
-                <div class="input-group">
-                    <label>Cédula / Identificación</label>
-                    <input type="text"
-                           id="client-id"
-                           placeholder="Ej: 1726354890">
-                </div>
+              <input
+                type="text"
+                id="client-name"
+                placeholder="Ingrese el nombre completo"
+              />
+              <input type="number" id="client-income" placeholder="Ingresos" />
 
-                <div class="input-group">
-                    <label>Nombres y Apellidos completos</label>
-                    <input type="text"
-                           id="client-name"
-                           placeholder="Ej: Juan Pérez">
-                </div>
+              <input type="number" id="client-expenses" placeholder="Egresos" />
 
-                <div class="input-group">
-                    <label>Correo Electrónico</label>
-                    <input type="email"
-                           id="client-email"
-                           placeholder="Ej: juan@mail.com">
-                </div>
+      <div class="customer-actions">
 
-                <div class="input-group">
-                    <label>Ingresos Mensuales ($)</label>
-                    <input type="number"
-                           id="client-income"
-                           placeholder="Ej: 850">
-                </div>
+    <button id="save-client">
+        Guardar cliente
+    </button>
 
-                <button id="save-client"
-                        style="grid-column: span 2;
-                               padding:15px;
-                               border:none;
-                               border-radius:14px;
-                               background:#7ed957;
-                               font-weight:bold;
-                               cursor:pointer;">
-
-                    Registrar Cliente
-
-                </button>
-
-            </div>
-
-            <!-- RESULTADO -->
-
-            <div class="result-box"
-                 id="client-status-box"
-                 style="display:none; margin-top:20px;">
-
-                <p style="color:#28a745; font-weight:bold;">
-                    <i class="fa-solid fa-circle-check"></i>
-                    Cliente activo en el sistema:
-                </p>
-
-                <span id="active-client-text">--</span>
-
-            </div>
-
-        </section>
-
-        <footer class="footer">
-            <p>FinanceLab Pro © 2026</p>
-        </footer>
-
-    </main>
+    <button type="button" id="clear-client">
+        Limpiar
+    </button>
 
 </div>
 
-<!-- SCRIPTS -->
+            <!-- TABLA DE CLIENTES -->
 
-<script src="../js/navegacion.js"></script>
+<table class="clients-table">
 
-<!-- Cuando crees la lógica -->
-<!-- <script src="../js/clientes.js"></script> -->
+    <thead>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Ingresos</th>
+            <th>Egresos</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
 
-</body>
+    <tbody id="clients-body">
+
+    </tbody>
+
+</table>
+          </section>
+
+          <!-- RESULTADO -->
+
+          <div
+            class="result-box"
+            id="client-status-box"
+            style="display: none; margin-top: 20px"
+          >
+            <p style="color: #28a745; font-weight: bold">
+              
+              Cliente activo en el sistema:
+            </p>
+
+            <span id="active-client-text">--</span>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>FinanceLab Pro © 2026</p>
+        </footer>
+      </main>
+    </div>
+
+    <!-- SCRIPTS -->
+
+    <script src="../js/navegacion.js"></script>
+
+    <!-- Cuando crees la lógica -->
+    <!-- <script src="../js/clientes.js"></script> -->
+  </body>
 </html>

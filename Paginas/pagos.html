@@ -20,152 +20,150 @@
       <!-- NAVBAR -->
       <header class="navbar">
         <div class="nav-logo">
-          <i class="fa-solid fa-chart-line"></i>
           <span>FinanceLab-Matemática 1</span>
         </div>
 
-        <button class="menu-btn">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <button class="menu-btn"></button>
         <nav class="nav-menu">
-          <a class="nav-link" href="../index.html">
-            <i class="fa-solid fa-house"></i>
-            Inicio
-          </a>
+          <a class="nav-link" href="../index.html"> Inicio </a>
 
-          <a class="nav-link" href="teoria.html">
-            <i class="fa-solid fa-book"></i>
-            Teoría
-          </a>
+          <a class="nav-link" href="teoria.html"> Teoría </a>
 
-          <a class="nav-link" href="calculadoras.html">
-            <i class="fa-solid fa-calculator"></i>
-            Calculadoras
-          </a>
+          <a class="nav-link" href="calculadoras.html"> Calculadoras </a>
 
-          <a class="nav-link" href="simulador.html">
-            <i class="fa-solid fa-chart-pie"></i>
-            Simulador
-          </a>
+          <a class="nav-link" href="simulador.html"> Simulador </a>
 
-          <a class="nav-link" href="quiz.html">
-            <i class="fa-solid fa-clipboard-question"></i>
-            Quiz
-          </a>
+          <a class="nav-link" href="quiz.html"> Quiz </a>
         </nav>
 
         <div class="nav-right">
-          <button id="theme-toggle">
-            <i class="fa-solid fa-moon"></i>
-          </button>
+          <button id="theme-toggle"></button>
 
           <div class="avatar">US</div>
         </div>
       </header>
       <section class="subnav">
-        <a href="simulador.html" class="subnav-item">
-          <i class="fa-solid fa-chart-line"></i>
-          Futuro Financiero
-        </a>
+        <a href="simulador.html" class="subnav-item"> Futuro Financiero </a>
 
-        <a href="clientes.html" class="subnav-item">
-          <i class="fa-solid fa-users"></i>
-          Clientes
-        </a>
+        <a href="clientes.html" class="subnav-item"> Clientes </a>
 
-        <a href="creditos.html" class="subnav-item">
-          <i class="fa-solid fa-money-bill"></i>
-          Créditos
-        </a>
+        <a href="creditos.html" class="subnav-item"> Créditos </a>
 
-        <a href="pagos.html" class="subnav-item active">
-          <i class="fa-solid fa-cash-register"></i>
-          Pagos
-        </a>
+        <a href="pagos.html" class="subnav-item active"> Pagos </a>
       </section>
       <!-- MAIN -->
       <main class="main">
         <section id="payment-register" class="panel payment-panel">
-          <h3>
-            <i class="fa-solid fa-money-bill-transfer"></i>
-            Registro de Pagos y Validación
-          </h3>
+          <h3>Registro de Pagos</h3>
 
           <p class="panel-description">
-            Controla el estado del crédito de tus clientes ingresando el pago de
-            las cuotas ejecutadas.
+            Consulta créditos activos y registra pagos de cuotas.
           </p>
 
-          <div
-            class="calc-form"
-            style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px"
-          >
+          <!-- BUSCAR CLIENTE -->
+
+          <div class="credit-search">
             <div class="input-group">
-              <label>Número de Cuota a Pagar</label>
               <input
-                type="number"
-                id="pay-cuota-num"
-                placeholder="Ej: 1"
-                min="1"
+                type="text"
+                id="payment-client-id"
+                placeholder="Ingrese la cédula del cliente"
               />
             </div>
 
-            <div class="input-group">
-              <label>Valor a Depositar ($)</label>
-              <input
-                type="number"
-                id="pay-amount"
-                placeholder="Monto exacto de la cuota"
-              />
-            </div>
-
-            <button
-              id="execute-payment"
-              style="
-                grid-column: span 2;
-                padding: 15px;
-                border: none;
-                border-radius: 14px;
-                background: #ffc107;
-                color: #333;
-                font-weight: bold;
-                cursor: pointer;
-              "
-            >
-              Procesar Pago
-            </button>
+            <button id="search-payment-client">Buscar cliente</button>
           </div>
 
-          <!-- RESULTADOS -->
+          <!-- DATOS DEL CLIENTE -->
 
           <div
-            class="result-box"
-            id="payment-log-box"
-            style="display: none; margin-top: 20px"
+            class="credit-client-card"
+            id="payment-client-card"
+            style="display: none"
           >
-            <h4>Validaciones de Estado de Crédito</h4>
+            <h4>Crédito activo</h4>
+
+            <p><strong>Cédula:</strong> <span id="payment-id">--</span></p>
+
+            <p><strong>Cliente:</strong> <span id="payment-name">--</span></p>
+
+            <p><strong>Crédito:</strong> $<span id="payment-credit">0</span></p>
 
             <p>
-              Estado General:
-              <span
-                id="credit-status"
-                style="font-weight: bold; color: #007bff"
+              <strong>Saldo pendiente:</strong> $<span id="payment-balance"
+                >0</span
               >
-                Al día
-              </span>
             </p>
 
             <p>
-              Cuotas Pendientes:
-              <span id="pending-cuotas-count"> -- </span>
+              <strong>Cuota mensual:</strong> $<span id="payment-cuota">0</span>
+            </p>
+            <p>
+              <strong>Estado:</strong>
+              <span id="payment-credit-status"> Al día </span>
+            </p>
+          </div>
+
+          <!-- FORMULARIO -->
+
+          <div class="calc-form">
+            <div class="input-group">
+              <input
+                type="number"
+                id="payment-installment"
+                placeholder="Número de cuota"
+              />
+            </div>
+
+            <div class="credit-buttons">
+              <button id="process-payment">Procesar pago</button>
+            </div>
+          </div>
+
+          <!-- RESULTADO -->
+
+          <div class="credit-result" id="payment-result" style="display: none">
+            <p>
+              Estado:
+              <strong id="payment-status"> AL DÍA </strong>
             </p>
 
             <p>
-              Historial de Operación:
-              <span id="payment-history-text" style="font-style: italic">
-                Ningún pago registrado.
-              </span>
+              Saldo restante:
+              <strong id="remaining-balance"> 0 </strong>
             </p>
+          </div>
+
+          <!-- HISTORIAL -->
+
+          <div
+            class="table-credit-container"
+            id="payment-history"
+            style="display: block"
+          >
+            <h4>Historial de Pagos</h4>
+
+            <table class="clients-table">
+              <thead>
+                <tr>
+                  <th>Cuota</th>
+                  <th>Fecha</th>
+                  <th>Valor</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+
+              <tbody id="payment-body">
+                <tr>
+                  <td>1</td>
+                  <td>17/06/2026</td>
+                  <td>$250</td>
+                  <td>Pagado</td>
+                  <td>✓</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
