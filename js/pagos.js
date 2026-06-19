@@ -312,7 +312,13 @@ function filtrarPorFecha() {
 ">
   ${estadoMostrar}
 </td>
-        <td>-</td>
+        <td>
+  ${
+    cuota.estado == "Pendiente" || cuota.estado == "Atrasada"
+      ? `<button onclick="pagarCuota(${cuota.numero})">Pagar</button>`
+      : "✔"
+  }
+</td>
       </tr>
     `;
   }
