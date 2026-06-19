@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="../css/animations.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/responsive.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -42,42 +45,76 @@
           <p class="panel-description">
             Consulta créditos activos y registra pagos de cuotas.
           </p>
-          
+
           <div class="payment-top">
             <div class="payment-left">
               <div class="credit-search">
                 <div class="input-group">
-                  <input type="text" id="payment-client-id" placeholder="Ingrese la cédula del cliente" />
+                  <input
+                    type="text"
+                    id="payment-client-id"
+                    placeholder="Ingrese la cédula del cliente"
+                  />
                 </div>
+
                 <button id="search-payment-client">Buscar cliente</button>
-                <button id="reset-simulator-btn" style="background-color: #e74c3c; color: white; margin-left: 10px;">
+                <button
+                  id="reset-simulator-btn"
+                  style="
+                    background-color: #e74c3c;
+                    color: white;
+                    margin-left: 10px;
+                  "
+                >
                   Reiniciar Sistema
                 </button>
               </div>
 
-              <div id="lista-creditos" style="margin-top: 15px; display: flex; gap: 10px;"></div>
+              <div
+                id="lista-creditos"
+                style="margin-top: 15px; display: flex; gap: 10px"
+              ></div>
             </div>
 
-            <div class="credit-client-card" id="payment-client-card" style="display: none">
+            <div
+              class="credit-client-card"
+              id="payment-client-card"
+              style="display: none"
+            >
               <h4>Crédito seleccionado</h4>
               <p><strong>Cliente:</strong> <span id="payment-name">--</span></p>
               <p><strong>Cédula:</strong> <span id="payment-id">--</span></p>
-              <p><strong>Saldo Actual:</strong> $<span id="payment-balance">0</span></p>
-              <p><strong>Estado Crédito:</strong> <span id="payment-credit-status">--</span></p>
+              <p>
+                <strong>Saldo Actual:</strong> $<span id="payment-balance"
+                  >0</span
+                >
+              </p>
+              <p>
+                <strong>Estado Crédito:</strong>
+                <span id="payment-credit-status">--</span>
+              </p>
             </div>
           </div>
 
-          <div class="table-credit-container" style="margin-top: 20px;">
-            <h4>Tabla de amortización</h4>
+          <div class="table-credit-container" style="margin-top: 20px">
+            <div class="payment-header">
+              <h4>Tabla de amortización</h4>
+
+              <div class="payment-filter">
+                <label for="fecha-consulta"> Consultar fecha: </label>
+
+                <input type="date" id="fecha-consulta" />
+              </div>
+            </div>
             <table class="clients-table">
               <thead>
                 <tr>
-                 <th>Cuota</th>
-                 <th>Vence</th>
-                 <th>Fecha pago</th>
-                 <th>Valor</th>
-                 <th>Estado</th>
-                 <th>Acción</th>
+                  <th>Cuota</th>
+                  <th>Vence</th>
+                  <th>Fecha pago</th>
+                  <th>Valor</th>
+                  <th>Estado</th>
+                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody id="payment-body"></tbody>
@@ -85,7 +122,9 @@
           </div>
 
           <div class="credit-result" id="payment-result" style="display: none">
-            <p>Estado de cuenta: <strong id="payment-status"> AL DÍA </strong></p>
+            <p>
+              Estado de cuenta: <strong id="payment-status"> AL DÍA </strong>
+            </p>
             <p>Saldo restante: <strong id="remaining-balance"> 0 </strong></p>
           </div>
         </section>
@@ -96,7 +135,6 @@
       </main>
     </div>
 
-    
     <script src="../js/navegacion.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/theme.js"></script>
@@ -104,4 +142,3 @@
     <script src="../js/pagos.js"></script>
   </body>
 </html>
-
