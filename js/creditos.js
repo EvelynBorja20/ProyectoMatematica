@@ -96,6 +96,7 @@ function generarTablaFrances(monto, plazo, tasa) {
 
   tabla.innerHTML = contenido;
 }
+
 function generarTablaAleman(monto, plazo, tasa) {
   let tabla = document.getElementById("amortization-body");
 
@@ -131,6 +132,7 @@ function generarTablaAleman(monto, plazo, tasa) {
 
   tabla.innerHTML = contenido;
 }
+
 // =========================
 // CALCULAR CRÉDITO
 // =========================
@@ -210,6 +212,7 @@ function calcularCredito() {
     generarTablaAleman(monto, plazo, tasa);
   }
 }
+
 // =========================
 // FUNCION LOCAL STORAGE
 // =========================
@@ -219,7 +222,7 @@ function guardarLocalStorage() {
 }
 
 // =========================
-// sOLICITAR CREDITOS
+// sOLICITAR CREDITOS (CORREGIDO)
 // =========================
 function solicitarCredito() {
   if (clienteSeleccionado == null) {
@@ -235,70 +238,156 @@ function solicitarCredito() {
     alert("Primero calcule el crédito");
     return;
   }
-  //SOLO ME DEJA CREAR UN CREDITO
-  // if (tieneCredito(clienteSeleccionado.cedula)) {
-  // alert("El cliente ya tiene un crédito");
-  //return;
-  //}
+
   let tipo = document.querySelector('input[name="credit-type"]:checked').value;
+  let fechaInicio = document.getElementById("credit-start-date").value;
 
-  // Crear las cuotas del crédito
+  if(fechaInicio == ""){
+    alert("Seleccione la fecha de inicio.");
+    return;
+  }
+
   let cuotas = [];
+  let fecha = new Date(fechaInicio + "T00:00:00");
+  
+  let saldoRestante = montoCalculado;
+  let tasaAnual = 15;
+  let tasaMensual = tasaAnual / 100 / 12;
+  
+  // Fórmulas financieras reales aplicadas a la base de datos
+  let cuotaFijaFrances = montoCalculado * (tasaMensual / (1 - Math.pow(1 + tasaMensual, -plazoCalculado)));
+  let capitalFijoAleman = montoCalculado / plazoCalculado;
+  
+  let totalMontoConInteres = 0;
 
-  for (let i = 1; i <= plazoCalculado; i++) {
+  for(let i = 1; i <= plazoCalculado; i++){
+    let fechaPago = new Date(fecha);
+    fechaPago.setMonth(fechaPago.getMonth() + i); // Siguiente mes
+
+    let interesMes = saldoRestante * tasaMensual;
+    let capitalMes = 0;
+    let valorCuota = 0;
+
+    if (tipo === "frances") {
+      capitalMes = cuotaFijaFrances - interesMes;
+      valorCuota = cuotaFijaFrances;
+    } else { 
+      capitalMes = capitalFijoAleman;
+      valorCuota = capitalFijoAleman + interesMes;
+    }
+
+    saldoRestante -= capitalMes;
+    if (saldoRestante < 0 || i === plazoCalculado) saldoRestante = 0;
+
+    totalMontoConInteres += valorCuota;
+
+    // Inyección de datos completa para la tabla
     cuotas.push({
-      numero: i,
-      valor: cuotaCalculada,
-      estado: "Pendiente",
+        numero: i,
+        capital: capitalMes,
+        interes: interesMes,
+        valor: valorCuota,
+        valorOriginal: valorCuota, 
+        fechaPago: fechaPago.toISOString().split("T")[0],
+        fechaRealPago: null,
+        estado: "Pendiente",
+        interesMora: 0
     });
   }
 
   let credito = {
     cedula: clienteSeleccionado.cedula,
-
     nombre: clienteSeleccionado.nombre,
-
     monto: montoCalculado,
-
     plazo: plazoCalculado,
-
-    cuota: cuotaCalculada,
-
-    saldo: montoCalculado,
-
-    tasa: 15,
-
+    cuota: tipo === "frances" ? cuotaFijaFrances : totalMontoConInteres / plazoCalculado, 
+    saldo: totalMontoConInteres, 
+    tasa: tasaAnual,
     tipo: tipo,
-
     estado: "Activo",
-
-    cuotas: cuotas,
+    fechaInicio: fechaInicio,
+    totalPagado: 0,
+    cuotas: cuotas
   };
 
   creditos.push(credito);
-
   guardarLocalStorage();
-  console.log(creditos);
-  alert("Crédito agregado");
+  
+  alert("Crédito solicitado con éxito mediante Sistema " + (tipo === "frances" ? "Francés" : "Alemán"));
+  
+  // Limpieza y reinicio de interfaz
   document.getElementById("credit-amount").value = "";
   document.getElementById("credit-months").value = "";
-
+  document.getElementById("credit-start-date").value = "";
   clienteSeleccionado = null;
-
   document.getElementById("credit-client-card").style.display = "none";
-  document.getElementById("show-id").textContent = "--";
-  document.getElementById("show-name").textContent = "--";
-  document.getElementById("show-income").textContent = "0";
-  document.getElementById("show-expenses").textContent = "0";
-
   document.getElementById("credit-result").style.display = "none";
-
   document.getElementById("amortization-body").innerHTML = "";
   document.getElementById("credit-client-id").value = "";
   cuotaCalculada = 0;
   montoCalculado = 0;
   plazoCalculado = 0;
   creditoAprobado = false;
+}
+ 
+//--Actualizacion de los Estados de cuenta--//
+function actualizarEstadoCuotas(credito){
+
+    let hoy = new Date();
+    credito.cuotas.forEach(cuota=>{
+
+        if(cuota.estado=="Pendiente" ){
+            let fecha=new Date(cuota.fechaPago + "T23:59:59");
+            if(hoy>fecha){
+                cuota.estado="Atrasada";
+            }
+        }
+    });
+
+    guardarLocalStorage();
+}
+
+//--pago de las cuotas--//
+function pagarCuota(credito, numero){
+
+    let cuota = credito.cuotas.find(c=>c.numero==numero);
+
+    if(cuota==null){
+        return;
+    }
+
+    if(
+        cuota.estado=="Al corriente" ||
+        cuota.estado=="Pagada con atraso"
+    ){
+        return;
+    }
+
+    let hoy = new Date();
+    let vencimiento = new Date(cuota.fechaPago + "T23:59:59");
+    cuota.fechaRealPago = hoy.toISOString().split("T")[0];
+
+    if(hoy>vencimiento){
+        cuota.estado="Pagada con atraso";
+    }else{
+        cuota.estado="Al corriente";
+    }
+
+    credito.saldo-=cuota.valor;
+    credito.totalPagado+=cuota.valor;
+
+    if(credito.saldo<0){
+        credito.saldo=0;
+    }
+
+    let pendientes=credito.cuotas.filter(c=>
+        c.estado=="Pendiente" ||
+        c.estado=="Atrasada"
+    );
+    if(pendientes.length==0){
+        credito.estado="Pagado";
+    }
+    guardarLocalStorage();
 }
 
 // =========================
@@ -316,6 +405,7 @@ function calcularCuotasActivas(cedula) {
 
   return total;
 }
+
 // =========================
 // EVENTOS
 // =========================
