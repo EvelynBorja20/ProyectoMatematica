@@ -191,7 +191,11 @@ function pagarCuota(numeroCuota) {
   }
 
   let hoy = new Date();
-  cuota.fechaRealPago = hoy.toISOString().split("T")[0];
+  const anio = hoy.getFullYear();
+  const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+  const dia = String(hoy.getDate()).padStart(2, "0");
+
+  cuota.fechaRealPago = `${anio}-${mes}-${dia}`;
 
   let vencimiento = new Date(cuota.fechaPago + "T23:59:59");
 
