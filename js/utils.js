@@ -20,3 +20,42 @@ function mostrarResultado(id, valor) {
 function camposValidos(...valores) {
   return valores.every((valor) => !isNaN(valor));
 }
+
+
+function mostrarAlerta(mensaje) {
+  let alertaAnterior = document.querySelector(".overlay-alerta");
+
+  if (alertaAnterior) {
+    alertaAnterior.remove();
+  }
+
+  let overlay = document.createElement("div");
+
+  overlay.className = "overlay-alerta";
+
+  overlay.innerHTML = `
+    <div class="alerta-modal">
+      <div class="alerta-check">
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <h2>¡Éxito!</h2>
+
+      <p>${mensaje}</p>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  setTimeout(() => {
+    overlay.classList.add("mostrar");
+  }, 20);
+
+  setTimeout(() => {
+    overlay.classList.remove("mostrar");
+
+    setTimeout(() => {
+      overlay.remove();
+    }, 300);
+  }, 2200);
+}
