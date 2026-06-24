@@ -27,7 +27,7 @@ function buscarCreditos(cedula) {
 }
 
 // =======================
-// BUSCAR CLIENTE
+// BUSCAR CLIENTE PAGO
 // =======================
 function buscarClientePago() {
   let cedula = document.getElementById("payment-client-id").value.trim();
@@ -52,6 +52,7 @@ function buscarClientePago() {
       <button
         id="credito-${i}"
         class="btn-credito"
+        style="padding: 5px 10px; cursor: pointer;"
         onclick="seleccionarCredito(${i})">
         Crédito ${i + 1}
       </button>
@@ -63,12 +64,18 @@ function buscarClientePago() {
 } 
 
 // =======================
-// ACTUALIZAR ESTADOS (Mora diaria)
+// ACTUALIZAR ESTADOS (Simulación de tiempo y moras)
 // =======================
 function actualizarEstados() {
   if (!creditoSeleccionado || !creditoSeleccionado.cuotas) return;
   
+  // Usar la fecha del input de simulación si existe, de lo contrario usar hoy
   let hoy = new Date();
+  let fechaSimuladaInput = document.getElementById("simulation-current-date").value;
+  if (fechaSimuladaInput) {
+    hoy = new Date(fechaSimuladaInput + "T23:59:59");
+  }
+  
   let tasaMoraAnual = 36; 
 
   creditoSeleccionado.cuotas.forEach(cuota => {
@@ -83,6 +90,10 @@ function actualizarEstados() {
         let tasaDiariaMora = (tasaMoraAnual / 100) / 360;
         cuota.interesMora = (cuota.valorOriginal || cuota.valor) * tasaDiariaMora * diasRetraso;
         cuota.valor = (cuota.valorOriginal || cuota.valor) + cuota.interesMora;
+      } else {
+        cuota.estado = "Pendiente";
+        cuota.interesMora = 0;
+        cuota.valor = cuota.valorOriginal || cuota.valor;
       }
     }
   });
@@ -203,6 +214,21 @@ function pagarCuota(numeroCuota){
 }
 
 // =======================
+// VALIDAR FECHA SIMULADA
+// =======================
+function validarFechaSimulada() {
+  if (!creditoSeleccionado) {
+    alert("Primero busque un cliente y seleccione un crédito.");
+    return;
+  }
+  actualizarEstados(); 
+  pintarPagos(); 
+  
+  document.getElementById("payment-balance").textContent = formatearDinero(creditoSeleccionado.saldo);
+  document.getElementById("remaining-balance").textContent = formatearDinero(creditoSeleccionado.saldo);
+}
+
+// =======================
 // REINICIAR SIMULADOR
 // =======================
 function reiniciarSimulador() {
@@ -223,6 +249,10 @@ document
   .getElementById("reset-simulator-btn")
   .addEventListener("click", reiniciarSimulador);
 
-// Exposición global para los eventos onclick dinámicos
+document
+  .getElementById("validate-simulation-btn")
+  .addEventListener("click", validarFechaSimulada);
+
+// Exposición global
 window.seleccionarCredito = seleccionarCredito;
 window.pagarCuota = pagarCuota;
