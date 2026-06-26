@@ -1,21 +1,30 @@
 <!doctype html>
 <html lang="es">
   <head>
+<<<<<<< HEAD
     <meta charset="UTF-8" />
+=======
+    <meta charset="UTF-8" /
+>>>>>>> 9db38e5 (actualizacion de la pagina)
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pagos - FinanceLab Pro</title>
     <link rel="stylesheet" href="../css/animations.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/responsive.css" />
+<<<<<<< HEAD
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+>>>>>>> 9db38e5 (actualizacion de la pagina)
   </head>
 
   <body>
     <div class="dashboard">
       <header class="navbar">
+<<<<<<< HEAD
         <div class="nav-logo">
           <img src="../img/logotipo-adv.webp" alt="Logo" />
         </div>
@@ -43,6 +52,25 @@
       </header>
 
 
+=======
+        <div class="nav-logo">s
+          <span>FinanceLab-Matemática 1</span>
+        </div>
+        <button class="menu-btn"></button>
+        <nav class="nav-menu">
+          <a class="nav-link" href="../index.html"> Inicio </a>
+          <a class="nav-link" href="teoria.html"> Teoría </a>
+          <a class="nav-link" href="calculadoras.html"> Calculadoras </a>
+          <a class="nav-link" href="clientes.html"> Simulador </a>
+          <a class="nav-link" href="quiz.html"> Quiz </a>
+        </nav>
+        <div class="nav-right">
+          <button id="theme-toggle"></button>
+          <div class="avatar">US</div>
+        </div>
+      </header>
+
+>>>>>>> 9db38e5 (actualizacion de la pagina)
       <section class="subnav">
         <a href="clientes.html" class="subnav-item"> Clientes </a>
         <a href="creditos.html" class="subnav-item"> Créditos </a>
@@ -55,11 +83,16 @@
           <p class="panel-description">
             Consulta créditos activos y registra pagos de cuotas.
           </p>
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> 9db38e5 (actualizacion de la pagina)
           <div class="payment-top">
             <div class="payment-left">
               <div class="credit-search">
                 <div class="input-group">
+<<<<<<< HEAD
                   <input
                     type="text"
                     id="payment-client-id"
@@ -76,10 +109,17 @@
                     margin-left: 10px;
                   "
                 >
+=======
+                  <input type="text" id="payment-client-id" placeholder="Ingrese la cédula del cliente" />
+                </div>
+                <button id="search-payment-client">Buscar cliente</button>
+                <button id="reset-simulator-btn" style="background-color: #e74c3c; color: white; margin-left: 10px;">
+>>>>>>> 9db38e5 (actualizacion de la pagina)
                   Reiniciar Sistema
                 </button>
               </div>
 
+<<<<<<< HEAD
               <div
                 id="lista-creditos"
                 style="margin-top: 15px; display: flex; gap: 10px"
@@ -125,6 +165,43 @@
                   <th>Valor</th>
                   <th>Estado</th>
                   <th>Acción</th>
+=======
+              <div id="lista-creditos" style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;"></div>
+
+              <div class="simulation-date-box" style="margin-top: 20px; padding: 15px; border: 1px dashed #3498db; border-radius: 5px; background-color: rgba(52, 152, 219, 0.05);">
+                <label style="display: block; margin-bottom: 8px; font-weight: bold; color: #3498db;">
+                  <i class="fa-solid fa-clock"></i> Simular Fecha Actual del Sistema:
+                </label>
+                <div style="display: flex; gap: 10px;">
+                  <input type="date" id="simulation-current-date" style="padding: 6px; flex-grow: 1; border: 1px solid #3498db; border-radius: 4px;" />
+                  <button id="validate-simulation-btn" style="background-color: #3498db; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                    Validar Préstamo
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="credit-client-card" id="payment-client-card" style="display: none">
+              <h4>Crédito seleccionado</h4>
+              <p><strong>Cliente:</strong> <span id="payment-name">--</span></p>
+              <p><strong>Cédula:</strong> <span id="payment-id">--</span></p>
+              <p><strong>Saldo Actual:</strong> $<span id="payment-balance">0</span></p>
+              <p><strong>Estado Crédito:</strong> <span id="payment-credit-status">--</span></p>
+            </div>
+          </div>
+
+          <div class="table-credit-container" style="margin-top: 20px;">
+            <h4>Tabla de amortización</h4>
+            <table class="clients-table">
+              <thead>
+                <tr>
+                 <th>Cuota</th>
+                 <th>Vence</th>
+                 <th>Fecha pago</th>
+                 <th>Valor</th>
+                 <th>Estado</th>
+                 <th>Acción</th>
+>>>>>>> 9db38e5 (actualizacion de la pagina)
                 </tr>
               </thead>
               <tbody id="payment-body"></tbody>
@@ -132,9 +209,13 @@
           </div>
 
           <div class="credit-result" id="payment-result" style="display: none">
+<<<<<<< HEAD
             <p>
               Estado de cuenta: <strong id="payment-status"> AL DÍA </strong>
             </p>
+=======
+            <p>Estado de cuenta: <strong id="payment-status"> AL DÍA </strong></p>
+>>>>>>> 9db38e5 (actualizacion de la pagina)
             <p>Saldo restante: <strong id="remaining-balance"> 0 </strong></p>
           </div>
         </section>
@@ -152,3 +233,7 @@
     <script src="../js/pagos.js"></script>
   </body>
 </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9db38e5 (actualizacion de la pagina)
