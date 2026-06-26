@@ -371,3 +371,51 @@ MOVILES PEQUEÑOS
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+  .alerta-modal {
+    max-width: 320px;
+    padding: 28px 20px;
+  }
+
+  .alerta-check {
+    width: 70px;
+    height: 70px;
+
+    font-size: 32px;
+  }
+
+  .alerta-modal h2 {
+    font-size: 26px;
+  }
+
+  .alerta-modal p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-alerta {
+    padding: 15px;
+  }
+
+  .alerta-modal {
+    width: 100%;
+    border-radius: 20px;
+    padding: 25px 18px;
+  }
+
+  .alerta-check {
+    width: 60px;
+    height: 60px;
+
+    font-size: 28px;
+  }
+
+  .alerta-modal h2 {
+    font-size: 22px;
+  }
+
+  .alerta-modal p {
+    font-size: 14px;
+  }
+}

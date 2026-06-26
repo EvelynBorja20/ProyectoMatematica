@@ -15,29 +15,29 @@ function guardarCliente() {
 
   // Validar cédula
   if (cedula == "") {
-    alert("Ingrese la cédula");
+    mostrarAlerta("warning", "Ingrese la cédula.");
     return;
   }
 
   if (cedula.length != 10 || isNaN(cedula)) {
-    alert("La cédula debe tener exactamente 10 números");
+    mostrarAlerta("error", "La cédula debe tener exactamente 10 números.");
     return;
   }
 
   // Validar nombre
   if (nombre == "") {
-    alert("Ingrese el nombre");
+    mostrarAlerta("warning", "Ingrese el nombre del cliente.");
     return;
   }
 
   // Validar números
   if (!camposValidos(ingresos, egresos)) {
-    alert("Ingrese ingresos y egresos válidos");
+    mostrarAlerta("warning", "Ingrese ingresos y egresos válidos.");
     return;
   }
 
   if (ingresos < 0 || egresos < 0) {
-    alert("Los valores no pueden ser negativos");
+    mostrarAlerta("error", "Los valores no pueden ser negativos.");
     return;
   }
 
@@ -46,7 +46,7 @@ function guardarCliente() {
 
   // Evitar repetidos
   if (existente != null && clienteSeleccionado == null) {
-    alert("El cliente ya se encuentra registrado");
+    mostrarAlerta("info", "El cliente ya se encuentra registrado.");
     return;
   }
 
@@ -61,13 +61,13 @@ function guardarCliente() {
 
     clientes.push(cliente);
 
-    alert("Cliente registrado");
+    mostrarAlerta("success", "Cliente registrado correctamente.");
   } else {
     existente.nombre = nombre;
     existente.ingresos = ingresos;
     existente.egresos = egresos;
 
-    alert("Cliente actualizado");
+    mostrarAlerta("success", "Cliente actualizado correctamente.");
   }
 
   guardarLocalStorage();
@@ -143,7 +143,7 @@ function seleccionarCliente(cedula) {
 
 function eliminarCliente(cedula) {
   let confirmar = confirm("¿Desea eliminar el cliente?");
-
+  mostrarAlerta("success", "Cliente eliminado correctamente.");
   if (!confirmar) {
     return;
   }
@@ -159,6 +159,7 @@ function eliminarCliente(cedula) {
   guardarLocalStorage();
 
   pintarClientes();
+  mostrarAlerta("success", "Cliente eliminado correctamente.");
 }
 
 // limpiar

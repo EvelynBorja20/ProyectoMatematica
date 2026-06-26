@@ -20,127 +20,89 @@
       <!-- NAVBAR PRINCIPAL -->
       <header class="navbar">
         <div class="nav-logo">
-         
-          <span>FinanceLab-Matemática 1</span>
+          <img src="../img/logotipo-adv.webp" alt="Logo" />
         </div>
 
         <button class="menu-btn">
-          
+          <i class="fa-solid fa-bars"></i>
         </button>
 
         <nav class="nav-menu">
-          <a class="nav-link" href="../index.html">
-            
-            Inicio
-          </a>
-
-          <a class="nav-link" href="teoria.html">
-            
-            Teoría
-          </a>
-
-          <a class="nav-link" href="calculadoras.html">
-            
-            Calculadoras
-          </a>
-
-          <a class="nav-link" href="clientes.html">
-            
-            Simulador
-          </a>
-
-          <a class="nav-link" href="quiz.html">
-            
-            Quiz
-          </a>
+          <a class="nav-link" href="../index.html">Inicio</a>
+          <a class="nav-link" href="teoria.html">Teoría</a>
+          <a class="nav-link" href="calculadoras.html">Calculadoras</a>
+          <a class="nav-link active" href="clientes.html">Simulador</a>
+          <a class="nav-link" href="quiz.html">Quiz</a>
         </nav>
+
+        <div class="nav-icons">
+          <a href="https://github.com/GaloRamiro"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a href="https://github.com/EvelynBorja20"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+        </div>
       </header>
 
       <!-- SUBMENÚ DEL SIMULADOR -->
 
       <section class="subnav">
-    
+        <a href="clientes.html" class="subnav-item active"> Clientes </a>
 
-        <a href="clientes.html" class="subnav-item active">
-          
-          Clientes
-        </a>
+        <a href="creditos.html" class="subnav-item"> Créditos </a>
 
-        <a href="creditos.html" class="subnav-item">
-         
-          Créditos
-        </a>
-
-        <a href="pagos.html" class="subnav-item">
-       
-          Pagos
-        </a>
+        <a href="pagos.html" class="subnav-item"> Pagos </a>
       </section>
 
       <!-- MAIN -->
       <main class="main">
         <section id="customer-register" class="panel customer-panel">
-          <h3>
-            
-            Registro de Clientes
-          </h3>
+          <h3>Registro de Clientes</h3>
 
           <p class="panel-description">
             Ingresa los datos personales del solicitante para habilitar la
             simulación del crédito.
           </p>
 
-          <section id="customer-register" class="panel customer-panel">
-            <h3>Registro de Clientes</h3>
+          <div class="calc-form customer-grid">
+            <input
+              type="text"
+              id="client-id"
+              placeholder="Ingrese el número de cédula"
+            />
 
-            <div class="calc-form customer-grid">
-              <input
-                type="text"
-                id="client-id"
-                placeholder="Ingrese el número de cédula"
-              />
+            <input
+              type="text"
+              id="client-name"
+              placeholder="Ingrese el nombre completo"
+            />
+            <input type="number" id="client-income" placeholder="Ingresos" />
 
-              <input
-                type="text"
-                id="client-name"
-                placeholder="Ingrese el nombre completo"
-              />
-              <input type="number" id="client-income" placeholder="Ingresos" />
+            <input type="number" id="client-expenses" placeholder="Egresos" />
 
-              <input type="number" id="client-expenses" placeholder="Egresos" />
+            <div class="customer-actions">
+              <button id="save-client">Guardar cliente</button>
 
-      <div class="customer-actions">
+              <button type="button" id="clear-client">Limpiar</button>
+            </div>
+          </div>
 
-    <button id="save-client">
-        Guardar cliente
-    </button>
+          <!-- TABLA DE CLIENTES -->
 
-    <button type="button" id="clear-client">
-        Limpiar
-    </button>
+          <table class="clients-table">
+            <thead>
+              <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Ingresos</th>
+                <th>Egresos</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
 
-</div>
-
-            <!-- TABLA DE CLIENTES -->
-
-<table class="clients-table">
-
-    <thead>
-        <tr>
-            <th>Cédula</th>
-            <th>Nombre</th>
-            <th>Ingresos</th>
-            <th>Egresos</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-
-    <tbody id="clients-body">
-
-    </tbody>
-
-</table>
-          </section>
+            <tbody id="clients-body"></tbody>
+          </table>
 
           <!-- RESULTADO -->
 
@@ -150,7 +112,6 @@
             style="display: none; margin-top: 20px"
           >
             <p style="color: #28a745; font-weight: bold">
-              
               Cliente activo en el sistema:
             </p>
 
@@ -168,7 +129,6 @@
 
     <script src="../js/navegacion.js"></script>
     <script src="../js/utils.js"></script>
-<script src="../js/clientes.js"></script>
-
+    <script src="../js/clientes.js"></script>
   </body>
 </html>
