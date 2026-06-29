@@ -1,61 +1,122 @@
-// Agrupamos la calculadora en un objeto utilizando llaves { }
+// =========================
+// CALCULADORA FINANCIERA
+// Implementa el cálculo del
+// interés simple mediante
+// una estructura basada
+// en objetos.
+// =========================
+
+/**
+ * Objeto que encapsula la lógica
+ * de la calculadora de interés simple,
+ * incluyendo la inicialización de
+ * elementos y el procesamiento
+ * de los cálculos.
+ */
 const CalculadoraFinanciera = {
-  
+  // Referencias a los campos
+  // de entrada del formulario
   inputs: {},
+
+  // Referencias a los elementos
+  // donde se muestran los resultados
   salidas: {},
 
-  // Método para inicializar la calculadora
+  /**
+   * Inicializa la calculadora
+   * obteniendo los elementos del DOM
+   * y registrando los eventos necesarios.
+   */
   inicializar() {
-    // Asignamos las referencias del HTML usando llaves para estructurar
+    // Obtiene los campos
+    // de entrada del formulario
     this.inputs = {
       capital: document.getElementById("capital"),
       tasa: document.getElementById("rate"),
-      tiempo: document.getElementById("time")
+      tiempo: document.getElementById("time"),
     };
 
+    // Obtiene los elementos
+    // donde se mostrarán los resultados
     this.salidas = {
       boton: document.getElementById("calc-simple"),
       interes: document.getElementById("interest-result"),
-      total: document.getElementById("total-result")
+      total: document.getElementById("total-result"),
     };
 
-    // Escuchar el evento click
+    // Asigna el evento de clic
+    // al botón de cálculo
     this.salidas.boton.addEventListener("click", () => this.procesarCalculo());
   },
 
-  // Método para realizar la operación matemática
+  /**
+   * Calcula el interés simple y
+   * el monto total a partir de los
+   * datos ingresados por el usuario.
+   */
   procesarCalculo() {
-    // Extracción de valores de los inputs
-    const P = parseFloat(this.inputs.capital.value);  // Capital inicial
-    const rAnual = parseFloat(this.inputs.tasa.value); // Tasa de interés (%)
-    const t = parseFloat(this.inputs.tiempo.value);    // Tiempo en años
+    // Obtiene los valores ingresados
+    const P = parseFloat(this.inputs.capital.value);
+    const rAnual = parseFloat(this.inputs.tasa.value);
+    const t = parseFloat(this.inputs.tiempo.value);
 
-    // Validación de datos
-    if (isNaN(P) || isNaN(rAnual) || isNaN(t) || P <= 0 || rAnual < 0 || t <= 0) {
+    // Verifica que los datos
+    // sean válidos
+    if (
+      isNaN(P) ||
+      isNaN(rAnual) ||
+      isNaN(t) ||
+      P <= 0 ||
+      rAnual < 0 ||
+      t <= 0
+    ) {
       alert("Por favor, ingresa valores válidos y mayores a cero.");
+
       return;
     }
 
-    // Fórmulas de Interés Simple
+    // Convierte la tasa
+    // de porcentaje a decimal
     const r = rAnual / 100;
-    const interesGenerado = P * r * t; // I = P * r * t
-    const montoTotal = P + interesGenerado;  // A = P + I
 
-    // Opciones de formato de moneda con llaves { }
+    // Calcula el interés simple
+    const interesGenerado = P * r * t;
+
+    // Calcula el monto total
+    const montoTotal = P + interesGenerado;
+
+    // Configura el formato
+    // para mostrar moneda
     const formatoMoneda = {
       style: "currency",
       currency: "USD",
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     };
 
-    // Renderizar resultados en el HTML
-    this.salidas.interes.textContent = interesGenerado.toLocaleString("es-MX", formatoMoneda);
-    this.salidas.total.textContent = montoTotal.toLocaleString("es-MX", formatoMoneda);
-  }
+    // Muestra el interés generado
+    this.salidas.interes.textContent = interesGenerado.toLocaleString(
+      "es-MX",
+      formatoMoneda,
+    );
+
+    // Muestra el monto total
+    this.salidas.total.textContent = montoTotal.toLocaleString(
+      "es-MX",
+      formatoMoneda,
+    );
+  },
 };
 
+// =========================
+// INICIALIZACIÓN
+// Ejecuta la configuración
+// de la calculadora cuando
+// el documento termina
+// de cargarse.
+// =========================
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializa la calculadora
   CalculadoraFinanciera.inicializar();
 });

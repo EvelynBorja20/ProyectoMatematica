@@ -1,55 +1,88 @@
+// =========================
+// NAVEGACIÓN DE CALCULADORAS
+// Controla el cambio entre
+// las diferentes calculadoras
+// y paneles de la aplicación.
+// =========================
+
+
+// Espera a que el documento
+// termine de cargarse
 document.addEventListener("DOMContentLoaded", () => {
 
-    const botones = document.querySelectorAll(
-        ".calculators-subnav .subnav-item"
-    );
+  // Obtiene todos los botones
+  // del menú de calculadoras
+  const botones = document.querySelectorAll(
+    ".calculators-subnav .subnav-item"
+  );
 
-    const paneles = {
+  // Agrupa las referencias
+  // a los diferentes paneles
+  const paneles = {
 
-        simple:
-            document.getElementById("simple-panel"),
+    simple:
+      document.getElementById("simple-panel"),
 
-        compound:
-            document.getElementById("compound-panel"),
+    compound:
+      document.getElementById("compound-panel"),
 
-        future:
-            document.getElementById("future-panel"),
+    future:
+      document.getElementById("future-panel"),
 
-        tutor:
-            document.getElementById("tutor-panel"),
+    tutor:
+      document.getElementById("tutor-panel"),
 
-        chart:
-            document.getElementById("chart-panel")
-    };
+    chart:
+      document.getElementById("chart-panel")
 
-    botones.forEach((boton) => {
+  };
 
-        boton.addEventListener("click", () => {
+  // Recorre cada botón del menú
+  botones.forEach((boton) => {
 
-            botones.forEach((b) =>
-                b.classList.remove("active")
-            );
+    // Asigna el evento de clic
+    boton.addEventListener("click", () => {
 
-            boton.classList.add("active");
+      // Elimina la clase activa
+      // de todos los botones
+      botones.forEach((b) => {
 
-            Object.values(paneles).forEach((panel) => {
+        b.classList.remove("active");
 
-                if(panel){
-                    panel.style.display = "none";
-                }
+      });
 
-            });
+      // Activa el botón seleccionado
+      boton.classList.add("active");
 
-            const tipo = boton.dataset.calc;
+      // Oculta todos los paneles
+      Object.values(paneles).forEach((panel) => {
 
-            if(paneles[tipo]){
-                paneles[tipo].style.display = "block";
-            }
+        if (panel) {
 
-        });
+          panel.style.display = "none";
+
+        }
+
+      });
+
+      // Obtiene el tipo de
+      // calculadora seleccionado
+      const tipo = boton.dataset.calc;
+
+      // Muestra únicamente
+      // el panel correspondiente
+      if (paneles[tipo]) {
+
+        paneles[tipo].style.display = "block";
+
+      }
 
     });
 
-    paneles.simple.style.display = "block";
+  });
+
+  // Muestra la calculadora
+  // de interés simple al iniciar
+  paneles.simple.style.display = "block";
 
 });

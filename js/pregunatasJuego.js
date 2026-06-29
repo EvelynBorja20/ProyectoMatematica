@@ -10,21 +10,19 @@
 // - una explicación
 
 const quizPreguntas = [
-
   // =========================
   // PREGUNTA 1
   // =========================
   {
     // Pregunta que verá el jugador
-    pregunta:
-      "¿Qué ocurre en el interés compuesto?",
+    pregunta: "¿Qué ocurre en el interés compuesto?",
 
     // Opciones para escoger
     opciones: [
       "Solo crece el capital inicial",
       "Los intereses generan nuevos intereses",
       "No existe ganancia",
-      "El tiempo no influye"
+      "El tiempo no influye",
     ],
 
     // Respuesta correcta
@@ -37,7 +35,7 @@ const quizPreguntas = [
 
     // Explicación que aparece después de responder
     explicacion:
-      "En el interés compuesto los intereses se reinvierten y generan nuevas ganancias."
+      "En el interés compuesto los intereses se reinvierten y generan nuevas ganancias.",
   },
 
   // =========================
@@ -45,15 +43,14 @@ const quizPreguntas = [
   // =========================
   {
     // Pregunta del jugador
-    pregunta:
-      "¿Qué representa la tasa de interés?",
+    pregunta: "¿Qué representa la tasa de interés?",
 
     // Opciones
     opciones: [
       "El tiempo",
       "El capital inicial",
       "El porcentaje de crecimiento o costo del dinero",
-      "La ganancia final"
+      "La ganancia final",
     ],
 
     // Respuesta correcta
@@ -61,7 +58,7 @@ const quizPreguntas = [
 
     // Explicación
     explicacion:
-      "La tasa indica el porcentaje aplicado al dinero durante un periodo."
+      "La tasa indica el porcentaje aplicado al dinero durante un periodo.",
   },
 
   // =========================
@@ -69,15 +66,14 @@ const quizPreguntas = [
   // =========================
   {
     // Pregunta
-    pregunta:
-      "¿Qué es el capital en matemática financiera?",
+    pregunta: "¿Qué es el capital en matemática financiera?",
 
     // Respuestas posibles
     opciones: [
       "Dinero inicial invertido o prestado",
       "Ganancia acumulada",
       "Interés generado",
-      "Tiempo de inversión"
+      "Tiempo de inversión",
     ],
 
     // Opción correcta
@@ -85,7 +81,7 @@ const quizPreguntas = [
 
     // Explicación para aprender
     explicacion:
-      "El capital es la cantidad inicial utilizada para invertir o prestar."
+      "El capital es la cantidad inicial utilizada para invertir o prestar.",
   },
 
   // =========================
@@ -93,15 +89,14 @@ const quizPreguntas = [
   // =========================
   {
     // Pregunta final
-    pregunta:
-      "¿Qué calcula el valor futuro?",
+    pregunta: "¿Qué calcula el valor futuro?",
 
     // Opciones
     opciones: [
       "El dinero inicial",
       "El monto después del crecimiento financiero",
       "Solo intereses",
-      "La deuda pendiente"
+      "La deuda pendiente",
     ],
 
     // Respuesta correcta
@@ -109,6 +104,6 @@ const quizPreguntas = [
 
     // Explicación
     explicacion:
-      "El valor futuro representa cuánto dinero tendrás después del tiempo e intereses."
-  }
+      "El valor futuro representa cuánto dinero tendrás después del tiempo e intereses.",
+  },
 ];

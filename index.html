@@ -1,14 +1,19 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título que se muestra en la pestaña del navegador -->
     <title>FinanceLab Pro</title>
 
+    <!-- Hojas de estilo del proyecto -->
     <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 
+    <!-- Librería Font Awesome para utilizar iconos -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -16,18 +21,28 @@
   </head>
 
   <body>
+    <!-- ==========================
+         CONTENEDOR PRINCIPAL
+         Agrupa toda la interfaz.
+    =========================== -->
     <div class="dashboard">
-      
-      <!-- NAVBAR -->
+      <!-- ==========================
+           BARRA DE NAVEGACIÓN
+           Contiene el logotipo,
+           menú principal e iconos.
+      =========================== -->
       <header class="navbar">
+        <!-- Logotipo del proyecto -->
         <div class="nav-logo">
           <img src="img/logotipo-adv.webp" alt="Logo" />
         </div>
 
+        <!-- Botón del menú hamburguesa para dispositivos móviles -->
         <button class="menu-btn">
           <i class="fa-solid fa-bars"></i>
         </button>
 
+        <!-- Menú principal de navegación -->
         <nav class="nav-menu">
           <a class="nav-link active" href="index.html">Inicio</a>
           <a class="nav-link" href="Paginas/teoria.html">Teoría</a>
@@ -36,31 +51,50 @@
           <a class="nav-link" href="Paginas/quiz.html">Quiz</a>
         </nav>
 
+        <!-- Enlaces a los perfiles de GitHub de los desarrolladores -->
         <div class="nav-icons">
-          <a href="https://github.com/GaloRamiro"><i class="fa-brands fa-github"></i></a>
-          <a href="https://github.com/EvelynBorja20"><i class="fa-brands fa-github"></i></a>
+          <a href="https://github.com/GaloRamiro">
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+          <a href="https://github.com/EvelynBorja20">
+            <i class="fa-brands fa-github"></i>
+          </a>
         </div>
       </header>
 
+      <!-- ==========================
+           CONTENIDO PRINCIPAL
+      =========================== -->
       <main class="main">
-        <!-- HERO -->
+        <!-- ==========================
+             SECCIÓN HERO
+             Presentación inicial del
+             proyecto y botón de acceso.
+        =========================== -->
         <section class="hero">
           <div class="hero-content">
+            <!-- Título principal -->
             <h2>Aprende Matemática Financiera con herramientas interactivas</h2>
 
+            <!-- Descripción de la plataforma -->
             <p>
               Plataforma educativa para comprender cálculos financieros,
               simulaciones, créditos y toma de decisiones económicas.
             </p>
 
+            <!-- Botón que dirige a las calculadoras -->
             <a href="Paginas/calculadoras.html" class="hero-btn">
               Explorar Plataforma
             </a>
           </div>
         </section>
 
-        <!-- MÉTRICAS -->
-
+        <!-- ==========================
+             TARJETAS DE MÉTRICAS
+             Accesos rápidos a las
+             principales áreas.
+        =========================== -->
         <section class="metrics">
           <div class="metric-card">
             <h4>Interés</h4>
@@ -83,8 +117,10 @@
           </div>
         </section>
 
-        <!-- BIENVENIDA -->
-
+        <!-- ==========================
+             PANEL DE BIENVENIDA
+             Introducción a la plataforma.
+        =========================== -->
         <section class="panel">
           <h3>Bienvenido a FinanceLab Pro</h3>
 
@@ -95,12 +131,17 @@
           </p>
         </section>
 
+        <!-- ==========================
+             PIE DE PÁGINA
+             Información de derechos.
+        =========================== -->
         <footer class="footer">
           <p>FinanceLab Pro © 2026</p>
         </footer>
       </main>
     </div>
 
+    <!-- Archivo JavaScript encargado de la navegación responsive -->
     <script src="js/navegacion.js"></script>
   </body>
 </html>
