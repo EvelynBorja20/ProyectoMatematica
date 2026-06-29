@@ -6,12 +6,30 @@ function guardarLocalStorage() {
   localStorage.setItem("clientes", JSON.stringify(clientes));
 }
 
-//GUARDAR CLIENTES
+// VERIFICAR SOBREGIRO EN TIEMPO REAL
+function verificarSobregiro() {
+  let ingresos = obtenerNumero("client-income") || 0;
+  let egresos = obtenerNumero("client-expenses") || 0;
+  let ingresosExtra = obtenerNumero("client-extra-income") || 0;
+
+  let ingresosTotales = ingresos + ingresosExtra;
+  let aviso = document.getElementById("overdraft-warning");
+
+  // Si el egreso es mayor que el total de ingresos, muestra el aviso antes de guardar
+  if (egresos > ingresosTotales && egresos > 0) {
+    aviso.style.display = "block";
+  } else {
+    aviso.style.display = "none";
+  }
+}
+
+// GUARDAR CLIENTES
 function guardarCliente() {
   let cedula = document.getElementById("client-id").value.trim();
   let nombre = document.getElementById("client-name").value.trim();
   let ingresos = obtenerNumero("client-income");
   let egresos = obtenerNumero("client-expenses");
+  let ingresosExtra = obtenerNumero("client-extra-income") || 0; // Si está vacío, toma 0
 
   // Validar cédula
   if (cedula == "") {
@@ -30,13 +48,13 @@ function guardarCliente() {
     return;
   }
 
-  // Validar números
-  if (!camposValidos(ingresos, egresos)) {
+  // Validar números conservando tu función original 'camposValidos'
+  if (!camposValidos(ingresos, egresos) || isNaN(ingresosExtra)) {
     mostrarAlerta("warning", "Ingrese ingresos y egresos válidos.");
     return;
   }
 
-  if (ingresos < 0 || egresos < 0) {
+  if (ingresos < 0 || egresos < 0 || ingresosExtra < 0) {
     mostrarAlerta("error", "Los valores no pueden ser negativos.");
     return;
   }
@@ -50,22 +68,23 @@ function guardarCliente() {
     return;
   }
 
-  // Crear
+  // Crear o Actualizar
   if (existente == null) {
     let cliente = {
       cedula: cedula,
       nombre: nombre,
       ingresos: ingresos,
       egresos: egresos,
+      ingresosExtra: ingresosExtra // Guardamos el nuevo dato
     };
 
     clientes.push(cliente);
-
     mostrarAlerta("success", "Cliente registrado correctamente.");
   } else {
     existente.nombre = nombre;
     existente.ingresos = ingresos;
     existente.egresos = egresos;
+    existente.ingresosExtra = ingresosExtra; // Actualizamos el nuevo dato
 
     mostrarAlerta("success", "Cliente actualizado correctamente.");
   }
@@ -77,18 +96,17 @@ function guardarCliente() {
   limpiarFormulario();
 }
 
-//Buscar clientes
+// Buscar clientes
 function buscarCliente(cedula) {
   for (let i = 0; i < clientes.length; i++) {
     if (clientes[i].cedula == cedula) {
       return clientes[i];
     }
   }
-
   return null;
 }
 
-//pintar tabla
+// pintar tabla
 function pintarClientes() {
   console.log(clientes);
   let tabla = document.getElementById("clients-body");
@@ -97,6 +115,8 @@ function pintarClientes() {
 
   for (let i = 0; i < clientes.length; i++) {
     let cliente = clientes[i];
+    // Evita errores visuales con clientes antiguos que no tengan ingresosExtra en el LocalStorage
+    let extra = cliente.ingresosExtra !== undefined ? cliente.ingresosExtra : 0;
 
     contenido += `
       <tr>
@@ -104,6 +124,7 @@ function pintarClientes() {
         <td>${cliente.nombre}</td>
         <td>${formatearDinero(cliente.ingresos)}</td>
         <td>${formatearDinero(cliente.egresos)}</td>
+        <td>${formatearDinero(extra)}</td>
 
         <td>
           <button onclick="seleccionarCliente('${cliente.cedula}')">
@@ -122,7 +143,7 @@ function pintarClientes() {
   tabla.innerHTML = contenido;
 }
 
-//ACTULIZAR
+// ACTUALIZAR
 function seleccionarCliente(cedula) {
   let cliente = buscarCliente(cedula);
 
@@ -130,20 +151,19 @@ function seleccionarCliente(cedula) {
     clienteSeleccionado = cliente;
 
     document.getElementById("client-id").value = cliente.cedula;
-
     document.getElementById("client-name").value = cliente.nombre;
-
     document.getElementById("client-income").value = cliente.ingresos;
-
     document.getElementById("client-expenses").value = cliente.egresos;
+    document.getElementById("client-extra-income").value = cliente.ingresosExtra !== undefined ? cliente.ingresosExtra : 0;
+
+    // Al cargar los datos en la tabla de arriba, valida si está sobregirado inmediatamente
+    verificarSobregiro();
   }
 }
 
 // eliminar
-
 function eliminarCliente(cedula) {
   let confirmar = confirm("¿Desea eliminar el cliente?");
-  mostrarAlerta("success", "Cliente eliminado correctamente.");
   if (!confirmar) {
     return;
   }
@@ -151,13 +171,11 @@ function eliminarCliente(cedula) {
   for (let i = 0; i < clientes.length; i++) {
     if (clientes[i].cedula == cedula) {
       clientes.splice(i, 1);
-
       break;
     }
   }
 
   guardarLocalStorage();
-
   pintarClientes();
   mostrarAlerta("success", "Cliente eliminado correctamente.");
 }
@@ -168,9 +186,13 @@ function limpiarFormulario() {
   document.getElementById("client-name").value = "";
   document.getElementById("client-income").value = "";
   document.getElementById("client-expenses").value = "";
+  document.getElementById("client-extra-income").value = ""; 
+  
+  document.getElementById("overdraft-warning").style.display = "none"; // Oculta el aviso al limpiar
 
   clienteSeleccionado = null;
 }
+
 document
   .getElementById("save-client")
   .addEventListener("click", guardarCliente);
@@ -178,5 +200,10 @@ document
 document
   .getElementById("clear-client")
   .addEventListener("click", limpiarFormulario);
+
+// Escuchadores de eventos para controlar el aviso en tiempo real mientras el usuario escribe
+document.getElementById("client-income").addEventListener("input", verificarSobregiro);
+document.getElementById("client-expenses").addEventListener("input", verificarSobregiro);
+document.getElementById("client-extra-income").addEventListener("input", verificarSobregiro);
 
 pintarClientes();
