@@ -64,27 +64,40 @@ function buscarClientePago() {
   let contenedor = document.getElementById("lista-creditos");
 
   let html = "";
-
+  let primerCreditoDisponible = -1;
   // Genera un botón para cada
   // crédito encontrado
   for (let i = 0; i < listaCreditos.length; i++) {
+    if (listaCreditos[i].estado === "Pagado") {
+      continue;
+    }
+    if (primerCreditoDisponible === -1) {
+      primerCreditoDisponible = i;
+    }
     html += `
-      <button
-        id="credito-${i}"
-        class="btn-credito"
-        style="padding: 5px 10px; cursor: pointer;"
-        onclick="seleccionarCredito(${i})">
-        Crédito ${i + 1}
-      </button>
-    `;
+    <button
+      id="credito-${i}"
+      class="btn-credito"
+      style="padding: 5px 10px; cursor: pointer;"
+      onclick="seleccionarCredito(${i})">
+      Crédito ${i + 1}
+    </button>
+  `;
   }
 
   // Inserta los botones en la interfaz
   contenedor.innerHTML = html;
+  if (primerCreditoDisponible !== -1) {
+    seleccionarCredito(primerCreditoDisponible);
+  } else {
+    creditoSeleccionado = null;
+    contenedor.innerHTML =
+      "<p style='color:green;font-weight:bold'>✅ Todos los créditos han sido cancelados.</p>";
 
-  // Selecciona automáticamente
-  // el primer crédito disponible
-  seleccionarCredito(0);
+    document.getElementById("payment-client-card").style.display = "none";
+    document.getElementById("payment-result").style.display = "none";
+    return;
+  }
 }
 
 // =======================
@@ -385,20 +398,26 @@ function pagarCuota(numeroCuota) {
   }
 
   // Verifica si aún existen cuotas
-  // pendientes o atrasadas
-  let pendientes = creditoSeleccionado.cuotas.filter(
-    (c) => c.estado == "Pendiente" || c.estado == "Atrasada",
+  // Verifica si todas las cuotas ya fueron pagadas
+  let todasPagadas = creditoSeleccionado.cuotas.every(
+    (c) => c.estado === "Al corriente" || c.estado === "Pagada con atraso",
   );
 
-  // Si todas las cuotas fueron pagadas,
-  // actualiza el estado del crédito
-  if (pendientes.length == 0) {
+  // Si todas están pagadas,
+  // marca el crédito como pagado
+  if (todasPagadas) {
     creditoSeleccionado.estado = "Pagado";
   }
 
   // Guarda los cambios realizados
   guardarLocalStorage();
 
+  actualizarEstados();
+
+  if (creditoSeleccionado.estado === "Pagado") {
+    buscarClientePago();
+    return;
+  }
   // Actualiza la información
   // mostrada en la interfaz
   document.getElementById("payment-balance").textContent = formatearDinero(
