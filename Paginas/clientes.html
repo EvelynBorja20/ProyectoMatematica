@@ -17,7 +17,6 @@
 
   <body>
     <div class="dashboard">
-      <!-- NAVBAR PRINCIPAL -->
       <header class="navbar">
         <div class="nav-logo">
           <img src="../img/logotipo-adv.webp" alt="Logo" />
@@ -45,8 +44,6 @@
         </div>
       </header>
 
-      <!-- SUBMENÚ DEL SIMULADOR -->
-
       <section class="subnav">
         <a href="clientes.html" class="subnav-item active"> Clientes </a>
 
@@ -55,7 +52,6 @@
         <a href="pagos.html" class="subnav-item"> Pagos </a>
       </section>
 
-      <!-- MAIN -->
       <main class="main">
         <section id="customer-register" class="panel customer-panel">
           <h3>Registro de Clientes</h3>
@@ -81,14 +77,17 @@
 
             <input type="number" id="client-expenses" placeholder="Egresos" />
 
+            <input type="number" id="client-extra-income" placeholder="Ingresos Extra" />
+
+            <span id="overdraft-warning" style="color: #dc3545; font-weight: bold; display: none; grid-column: 1 / -1; margin-top: 5px; margin-bottom: 5px;">
+            </span>
+
             <div class="customer-actions">
               <button id="save-client">Guardar cliente</button>
 
               <button type="button" id="clear-client">Limpiar</button>
             </div>
           </div>
-
-          <!-- TABLA DE CLIENTES -->
 
           <table class="clients-table">
             <thead>
@@ -97,14 +96,12 @@
                 <th>Nombre</th>
                 <th>Ingresos</th>
                 <th>Egresos</th>
-                <th>Acciones</th>
+                <th>Ingresos Extra</th> <th>Acciones</th>
               </tr>
             </thead>
 
             <tbody id="clients-body"></tbody>
           </table>
-
-          <!-- RESULTADO -->
 
           <div
             class="result-box"
@@ -124,8 +121,6 @@
         </footer>
       </main>
     </div>
-
-    <!-- SCRIPTS -->
 
     <script src="../js/navegacion.js"></script>
     <script src="../js/utils.js"></script>
