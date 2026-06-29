@@ -114,6 +114,14 @@ const CalculadoraInteresCompuesto = {
       "es-MX",
       formatoMoneda,
     );
+      // =========================
+    // ACTUALIZAR CENTRO ANALÍTICO
+    // =========================
+
+    actualizarGraficoGlobal(
+      [P, interesGenerado, montoTotal],
+      ["Capital", "Intereses", "Monto Final"],
+    );
   },
 };
 
