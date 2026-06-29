@@ -268,6 +268,8 @@
 
           <!-- GRÁFICO -->
 
+          <!-- CENTRO ANALÍTICO -->
+
           <section
             class="panel global-chart-panel"
             id="chart-panel"
@@ -276,12 +278,55 @@
             <h3>Centro Analítico</h3>
 
             <p class="panel-description">
-              Visualiza gráficamente los resultados financieros obtenidos en las
-              calculadoras.
+              Analiza el comportamiento de tus simulaciones financieras mediante
+              gráficos dinámicos y un resumen de los principales indicadores
+              obtenidos en las calculadoras.
             </p>
 
-            <div class="chart-box">
-              <canvas id="financeChart"></canvas>
+            <!-- Tarjetas resumen -->
+            <section class="metrics">
+              <div class="metric-card">
+                <i class="fa-solid fa-sack-dollar fa-2x"></i>
+
+                <h4>Capital</h4>
+
+                <p id="metric-capital">$0.00</p>
+              </div>
+
+              <div class="metric-card">
+                <i class="fa-solid fa-chart-line fa-2x"></i>
+
+                <h4>Intereses</h4>
+
+                <p id="metric-interest">$0.00</p>
+              </div>
+
+              <div class="metric-card">
+                <i class="fa-solid fa-piggy-bank fa-2x"></i>
+
+                <h4>Total</h4>
+
+                <p id="metric-total">$0.00</p>
+              </div>
+            </section>
+
+            <!-- Panel gráfico -->
+
+            <div class="result-box">
+              <h4>
+                <i class="fa-solid fa-chart-column"></i>
+                Comparación Financiera
+              </h4>
+
+              <p>
+                Cada vez que utilices una calculadora, el gráfico se actualizará
+                automáticamente para mostrar la distribución del capital,
+                intereses y monto final.
+              </p>
+
+              <div class="chart-box">
+                <canvas id="financeChart"></canvas>
+              </div>
             </div>
           </section>
         </section>
@@ -295,13 +340,16 @@
     <!-- SCRIPTS -->
     <script src="../js/navegacion.js"></script>
     <script src="../js/utils.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/chart.js"></script>
     <script src="../js/interesesSimples.js"></script>
     <script src="../js/interesesCompuestos.js"></script>
     <script src="../js/futuro-simulador.js"></script>
     <script src="../js/tutor.js"></script>
 
     <!-- Si tienes gráfico -->
-    <script src="../js/chart.js"></script>
+    
     <script src="../js/calculadoras-menu.js"></script>
   </body>
 </html>
