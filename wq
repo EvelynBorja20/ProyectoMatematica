@@ -1,0 +1,44 @@
+* [33m2b9d9cb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m fix: corregir fecha de pago y agregar consulta historica de cuotas
+* [33md8b9192[m GC: agregar filtro de consulta historica por fecha en modulo de pagos
+* [33m5d3a7a6[m[33m ([m[1;31morigin/feature/futuro[m[33m, [m[1;32mrespaldo-dev[m[33m, [m[1;32mfeature/futuro[m[33m)[m Modificacion de creditos y pagos
+* [33mbdec3e0[m GC: agregar multiples creditos por cliente y pagos interactivos
+* [33ma907864[m Implementa módulo de clientes, créditos y pagos con localStorage
+* [33mab41bea[m GC: reorganizar simuldor y mejorar modulos finacieros
+* [33m4c533d3[m GC: cambio de interfaz principal y teoria de pagos
+* [33m71f59f9[m Arreglos preliminares
+* [33m6695fff[m Se agrega simulador de créditos
+*   [33m07b7656[m Merge branch 'dev' of https://github.com/EvelynBorja20/ProyectoMatematica into dev
+[32m|[m[33m\[m  
+[32m|[m *   [33mc9f921a[m Merge origin/dev into dev
+[32m|[m [34m|[m[35m\[m  
+[32m|[m * [35m\[m   [33m265f72a[m calculadora intereses compuetos
+[32m|[m [36m|[m[1;31m\[m [35m\[m  
+[32m|[m [36m|[m * [35m\[m   [33m82ea304[m Merge pull request #8 from EvelynBorja20/feature/Juego
+[32m|[m [36m|[m [1;32m|[m[1;33m\[m [35m\[m  
+[32m|[m [36m|[m * [1;33m\[m [35m\[m   [33m25d9fa5[m Merge pull request #6 from EvelynBorja20/feature/Juego
+[32m|[m [36m|[m [1;34m|[m[1;35m\[m [1;33m\[m [35m\[m  
+* [36m|[m [1;34m|[m [1;35m|[m [1;33m|[m [35m|[m [33m319f485[m Calculadoras
+[35m|[m [36m|[m[35m_[m[1;34m|[m[35m_[m[1;35m|[m[35m_[m[1;33m|[m[35m/[m  
+[35m|[m[35m/[m[36m|[m [1;34m|[m [1;35m|[m [1;33m|[m   
+* [36m|[m [1;34m|[m [1;35m|[m [1;33m|[m [33m749c9e9[m Cambios en la revision nombre de la pestaña matematicas
+[36m|[m[36m/[m [1;34m/[m [1;35m/[m [1;33m/[m  
+* [1;34m|[m [1;35m|[m [1;33m/[m [33m7b0c95a[m Calculadora
+[1;33m|[m [1;34m|[m[1;33m_[m[1;35m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;34m|[m [1;35m|[m   
+* [1;34m|[m [1;35m|[m [33m406bbe1[m[33m ([m[1;31morigin/feature/Juego[m[33m, [m[1;32mfeature/Juego[m[33m)[m feat: mejora navbar responsive y teoria interactiva
+* [1;34m|[m [1;35m|[m [33me6973b0[m feat: fundamentos interactivos y demos teoricos
+* [1;34m|[m [1;35m|[m [33m988ab53[m feat: colocamos la navegacion
+[1;35m|[m [1;34m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[1;34m|[m   
+* [1;34m|[m   [33m11f9e7e[m Merge branch 'feature/futuro' into dev
+[1;36m|[m[31m\[m [1;34m\[m  
+[1;36m|[m * [1;34m|[m [33m67db7ce[m Cambios de script y estilos
+* [31m|[m [1;34m|[m [33me587590[m Documentacion codigo en futuro-simulador.js
+[1;34m|[m [31m|[m[1;34m/[m  
+[1;34m|[m[1;34m/[m[31m|[m   
+* [31m|[m [33mb14a532[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Merge pull request #1 from EvelynBorja20/feature/futuro
+[32m|[m[31m\[m[31m|[m 
+[32m|[m * [33m07ced40[m Se agrega primera version de calculadora futuro
+[32m|[m[32m/[m  
+* [33ma356841[m[33m ([m[1;31morigin/feature/calculadora[m[33m, [m[1;32mfeature/calculadora[m[33m)[m Cambios
+* [33mec5bcef[m primer commit

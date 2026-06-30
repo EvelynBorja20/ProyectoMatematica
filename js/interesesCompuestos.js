@@ -1,67 +1,139 @@
-// Agrupamos la calculadora de interés compuesto en un objeto utilizando llaves { }
-const CalculadoraInteresCompuesto = {
-  // Elementos del DOM organizados
-  inputs: {},
-  salidas : {},
+// =========================
+// CALCULADORA DE INTERÉS
+// COMPUESTO
+// Implementa el cálculo del
+// interés compuesto mediante
+// una estructura basada
+// en objetos.
+// =========================
 
-  // Método para inicializar y capturar los elementos del HTML
+/**
+ * Objeto que encapsula la lógica
+ * de la calculadora de interés
+ * compuesto, incluyendo la
+ * inicialización de elementos y
+ * el procesamiento del cálculo.
+ */
+const CalculadoraInteresCompuesto = {
+  // Referencias a los campos
+  // de entrada del formulario
+  inputs: {},
+
+  // Referencias a los elementos
+  // donde se muestran los resultados
+  salidas: {},
+
+  /**
+   * Inicializa la calculadora,
+   * obtiene los elementos del DOM
+   * y registra los eventos.
+   */
   inicializar() {
+    // Obtiene los campos
+    // de entrada
     this.inputs = {
       capital: document.getElementById("compound-capital"),
       tasa: document.getElementById("compound-rate"),
-      tiempo: document.getElementById("compound-time")
+      tiempo: document.getElementById("compound-time"),
     };
 
+    // Obtiene los elementos
+    // donde se mostrarán los resultados
     this.salidas = {
       boton: document.getElementById("calc-compound"),
       interes: document.getElementById("compound-interest-result"),
-      total: document.getElementById("compound-total-result")
+      total: document.getElementById("compound-total-result"),
     };
 
-    // Validamos que el botón exista en la página antes de asignarle el evento
+    // Verifica que el botón exista
+    // antes de registrar el evento
     if (this.salidas.boton) {
-      this.salidas.boton.addEventListener("click", () => this.procesarCalculo());
+      this.salidas.boton.addEventListener("click", () =>
+        this.procesarCalculo(),
+      );
     }
   },
 
-  // Método principal para realizar la operación matemática exponencial
+  /**
+   * Calcula el interés compuesto
+   * y el monto total utilizando
+   * los datos ingresados por
+   * el usuario.
+   */
   procesarCalculo() {
-    // Extraemos y convertimos los valores de los inputs
-    const P = parseFloat(this.inputs.capital.value);   // Capital Inicial
-    const rAnual = parseFloat(this.inputs.tasa.value);  // Tasa de interés anual (%)
-    const t = parseFloat(this.inputs.tiempo.value);     // Tiempo en años
+    // Obtiene los valores ingresados
+    const P = parseFloat(this.inputs.capital.value);
+    const rAnual = parseFloat(this.inputs.tasa.value);
+    const t = parseFloat(this.inputs.tiempo.value);
 
-    // Validación de seguridad
-    if (isNaN(P) || isNaN(rAnual) || isNaN(t) || P <= 0 || rAnual < 0 || t <= 0) {
-      alert("Por favor, ingresa números válidos y mayores a cero en todos los campos.");
+    // Verifica que los datos
+    // sean válidos
+    if (
+      isNaN(P) ||
+      isNaN(rAnual) ||
+      isNaN(t) ||
+      P <= 0 ||
+      rAnual < 0 ||
+      t <= 0
+    ) {
+      alert(
+        "Por favor, ingresa números válidos y mayores a cero en todos los campos.",
+      );
+
       return;
     }
 
-    // FÓRMULA MATEMÁTICA DEL INTERÉS COMPUESTO
-    // 1. Convertimos el porcentaje de la tasa a decimal (ej: 5% -> 0.05)
+    // Convierte la tasa
+    // de porcentaje a decimal
     const r = rAnual / 100;
 
-    // 2. Calculamos el Monto Total (A) usando la fórmula: A = P * (1 + r)^t
-    const montoTotal = P * Math.pow((1 + r), t);
+    // Calcula el monto total
+    // aplicando interés compuesto
+    const montoTotal = P * Math.pow(1 + r, t);
 
-    // 3. El interés generado es la diferencia: I = Monto Total - Capital Inicial
+    // Calcula el interés generado
     const interesGenerado = montoTotal - P;
 
-    // Configuración para dar formato de dinero profesional ($0.00)
+    // Configura el formato
+    // de presentación en moneda
     const formatoMoneda = {
       style: "currency",
       currency: "USD",
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     };
 
-    // Renderizamos los resultados en las etiquetas del HTML
-    this.salidas.interes.textContent = interesGenerado.toLocaleString("es-MX", formatoMoneda);
-    this.salidas.total.textContent = montoTotal.toLocaleString("es-MX", formatoMoneda);
-  }
+    // Muestra el interés generado
+    this.salidas.interes.textContent = interesGenerado.toLocaleString(
+      "es-MX",
+      formatoMoneda,
+    );
+
+    // Muestra el monto total
+    this.salidas.total.textContent = montoTotal.toLocaleString(
+      "es-MX",
+      formatoMoneda,
+    );
+      // =========================
+    // ACTUALIZAR CENTRO ANALÍTICO
+    // =========================
+
+    actualizarGraficoGlobal(
+      [P, interesGenerado, montoTotal],
+      ["Capital", "Intereses", "Monto Final"],
+    );
+  },
 };
 
-// Aseguramos que el script se ejecute cuando el HTML esté completamente cargado
+// =========================
+// INICIALIZACIÓN
+// Ejecuta la configuración
+// de la calculadora cuando
+// el documento termina
+// de cargarse.
+// =========================
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializa la calculadora
   CalculadoraInteresCompuesto.inicializar();
 });

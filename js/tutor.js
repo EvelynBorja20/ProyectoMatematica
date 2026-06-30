@@ -1,34 +1,45 @@
 // =========================
 // TUTOR IA
+// Controla el funcionamiento
+// del asistente educativo de
+// la plataforma.
 // =========================
 
-// Cuando la página termina de cargar
+/**
+ * Espera a que el documento cargue
+ * completamente antes de inicializar
+ * los eventos del tutor.
+ */
 document.addEventListener("DOMContentLoaded", () => {
-
-  // Buscar el botón Preguntar
+  // Obtiene el botón para enviar preguntas
   const boton = document.getElementById("ask-tutor");
 
-  // Si no existe el botón, detener código
+  // Si el botón no existe, finaliza la ejecución
   if (!boton) return;
 
-  // Cuando se haga clic, responder pregunta
+  // Asigna el evento de clic al botón
   boton.addEventListener("click", responderTutor);
 });
 
-
 // =========================
-// BASE EDUCATIVA
+// BASE DE CONOCIMIENTO
+// Contiene las respuestas
+// educativas del tutor.
 // =========================
 
-// Esta función busca una respuesta
-// según lo que escriba el usuario
+/**
+ * Busca una respuesta relacionada
+ * con la pregunta ingresada por el usuario.
+ *
+ * @param {string} pregunta - Texto escrito por el usuario.
+ * @returns {string} Respuesta correspondiente al tema consultado.
+ */
 function buscarRespuesta(pregunta) {
-
-  // Convertir texto a minúsculas
-  // para evitar errores al comparar
+  // Convierte el texto a minúsculas
+  // para facilitar las comparaciones
   const texto = pregunta.toLowerCase();
 
-  // Buscar tema interés compuesto
+  // Tema: Interés compuesto
   if (
     texto.includes("interés compuesto") ||
     texto.includes("interes compuesto")
@@ -36,66 +47,58 @@ function buscarRespuesta(pregunta) {
     return "El interés compuesto reinvierte los intereses generados, permitiendo que el dinero crezca más rápido con el tiempo.";
   }
 
-  // Buscar interés simple
-  if (
-    texto.includes("interés simple") ||
-    texto.includes("interes simple")
-  ) {
+  // Tema: Interés simple
+  if (texto.includes("interés simple") || texto.includes("interes simple")) {
     return "El interés simple se calcula únicamente sobre el capital inicial y no reinvierte ganancias.";
   }
 
-  // Buscar tasa
+  // Tema: Tasa de interés
   if (texto.includes("tasa")) {
     return "La tasa representa el porcentaje de crecimiento o costo del dinero durante un periodo determinado.";
   }
 
-  // Buscar capital
+  // Tema: Capital
   if (texto.includes("capital")) {
     return "El capital es la cantidad inicial de dinero que se invierte o presta.";
   }
 
-  // Buscar valor futuro
+  // Tema: Valor futuro
   if (texto.includes("valor futuro")) {
     return "El valor futuro es el monto que tendrá una inversión después de aplicar intereses y tiempo.";
   }
 
-  // Respuesta si no encuentra tema
+  // Respuesta por defecto cuando no existe coincidencia
   return "Todavía estoy aprendiendo esa pregunta. Intenta preguntar sobre interés simple, compuesto, tasa o capital.";
 }
 
-
 // =========================
-// RESPONDER PREGUNTA
+// RESPUESTA DEL TUTOR
+// Procesa la consulta del
+// usuario y muestra la
+// respuesta correspondiente.
 // =========================
 
-// Función principal del tutor
+/**
+ * Lee la pregunta del usuario,
+ * obtiene la respuesta desde la base
+ * de conocimiento y la muestra
+ * en la interfaz.
+ */
 function responderTutor() {
+  // Obtiene la pregunta escrita por el usuario
+  const pregunta = document.getElementById("tutor-question").value.trim();
 
-  // Leer lo que escribió el usuario
-  const pregunta =
-    document.getElementById("tutor-question")
-    .value
-    .trim();
-
-  // Si no escribió nada
+  // Verifica que exista una pregunta
   if (!pregunta) {
-
-    // Mostrar aviso
-    mostrarResultado(
-      "tutor-answer",
-      "Escribe una pregunta."
-    );
+    // Muestra un mensaje solicitando ingresar texto
+    mostrarResultado("tutor-answer", "Escribe una pregunta.");
 
     return;
   }
 
-  // Buscar respuesta
-  const respuesta =
-    buscarRespuesta(pregunta);
+  // Busca la respuesta adecuada
+  const respuesta = buscarRespuesta(pregunta);
 
-  // Mostrar respuesta en pantalla
-  mostrarResultado(
-    "tutor-answer",
-    respuesta
-  );
+  // Presenta la respuesta en pantalla
+  mostrarResultado("tutor-answer", respuesta);
 }

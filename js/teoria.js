@@ -1,57 +1,56 @@
 // =========================
-// Fundamentos Interactivos
-// FinanceLab Pro
+// FUNDAMENTOS INTERACTIVOS
+// Controla la visualización
+// de los ejemplos teóricos
+// de FinanceLab Pro.
 // =========================
 
-// Espera que todo el HTML cargue antes de ejecutar
+/**
+ * Espera que el documento HTML
+ * cargue completamente antes de
+ * inicializar los eventos.
+ */
 document.addEventListener("DOMContentLoaded", () => {
-
-  // Activa interacción de Interés Simple
+  // Inicializa el ejemplo de Interés Simple
   activarDemo("demo-simple", "demo-simple-box");
 
-  // Activa interacción de Interés Compuesto
+  // Inicializa el ejemplo de Interés Compuesto
   activarDemo("demo-compound", "demo-compound-box");
 
-  // Activa interacción de Valor Futuro
+  // Inicializa el ejemplo de Valor Futuro
   activarDemo("demo-future", "demo-future-box");
 
-  // Activa interacción de Valor Presente
+  // Inicializa el ejemplo de Valor Presente
   activarDemo("demo-present", "demo-present-box");
 });
 
 // =========================
 // FUNCIÓN REUTILIZABLE
+// Gestiona la visualización
+// de los ejemplos de cada
+// concepto financiero.
 // =========================
 
-// Recibe:
-//
-// btnId  -> id del botón
-// boxId  -> id de la caja oculta
-//
-// Objetivo:
-// Mostrar u ocultar ejemplos teóricos
-//
+/**
+ * Asocia un botón con una caja de contenido
+ * para mostrar u ocultar un ejemplo práctico.
+ *
+ * @param {string} btnId - Identificador del botón.
+ * @param {string} boxId - Identificador de la caja de ejemplo.
+ */
 function activarDemo(btnId, boxId) {
-
-  // Busca botón en HTML
+  // Obtiene el botón correspondiente
   const boton = document.getElementById(btnId);
 
-  // Busca caja de ejemplo
+  // Obtiene la caja donde se muestra el ejemplo
   const caja = document.getElementById(boxId);
 
-  // Seguridad:
-  // Si no existen elementos, termina función
+  // Verifica que ambos elementos existan
   if (!boton || !caja) return;
 
-  // Evento click
+  // Asigna el evento de clic al botón
   boton.addEventListener("click", () => {
-
-    // Alterna visibilidad
-    // Si está visible → oculta
-    // Si está oculto → muestra
-    caja.style.display =
-      caja.style.display === "block"
-        ? "none"
-        : "block";
+    // Alterna la visibilidad del ejemplo
+    caja.style.display = caja.style.display === "block" ? "none" : "block";
   });
 }
